@@ -1,0 +1,31 @@
+---
+import { SITE_NAME } from "~/data/config";
+const nav = [
+  { href: "/", label: "首页" },
+  { href: "/about", label: "关于" },
+  { href: "/services", label: "服务" },
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-[#e0e0e0] bg-white/90 backdrop-blur">
+  <nav class="w-full max-w-[var(--page-width)] mx-auto px-6 flex items-center justify-between h-14">
+    <a href="/" class="font-heading font-bold text-[1.05rem]">{SITE_NAME}</a>
+    <ul class="flex items-center gap-6">
+      {nav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              "text-sm transition-colors",
+              Astro.url.pathname === item.href
+                ? "text-[var(--primary)]"
+                : "text-[#1d1d1f] hover:text-[var(--primary)]",
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

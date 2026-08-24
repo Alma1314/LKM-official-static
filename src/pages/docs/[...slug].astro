@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "~/layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const docs = await getCollection("docs");
+  return docs.map((doc) => ({ params: { slug: doc.id }, props: { doc } }));
+}
+
+const { doc } = Astro.props;
+const { Content } = await render(doc);
+---
+<BaseLayout title={doc.data.title} description={doc.data.description}>
+  <article class="py-12 max-w-2xl">
+    <h1 class="font-heading text-3xl font-bold mb-2">{doc.data.title}</h1>
+    <p class="text-sm text-[#7a7a7a] mb-6">
+      {doc.data.publishDate.toLocaleDateString("zh-CN")}
+    </p>
+    <div class="prose prose-neutral max-w-none">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

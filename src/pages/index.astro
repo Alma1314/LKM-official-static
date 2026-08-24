@@ -1,0 +1,38 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { SITE_DESCRIPTION } from "~/data/config";
+
+const docs = (await getCollection("docs")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+---
+
+<BaseLayout title="首页" description={SITE_DESCRIPTION}>
+  <section class="py-16">
+    <h1 class="font-heading text-4xl font-bold mb-4">欢迎来到理科迷 (LKM)</h1>
+    <p class="text-lg text-[#7a7a7a] max-w-2xl">
+      {SITE_DESCRIPTION}
+    </p>
+  </section>
+
+  <section class="py-8">
+    <h2 class="font-heading text-2xl font-semibold mb-6">最新文章</h2>
+    <ul class="grid gap-4 md:grid-cols-2">
+      {
+        docs.map((post) => (
+          <li class="border border-[#e0e0e0] rounded-lg p-5 transition hover:border-[var(--primary)]">
+            <a href={`/docs/${post.id}`} class="block">
+              <h3 class="font-heading text-lg font-semibold mb-1">
+                {post.data.title}
+              </h3>
+              {post.data.description && (
+                <p class="text-sm text-[#7a7a7a]">{post.data.description}</p>
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

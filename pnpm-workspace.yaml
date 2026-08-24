@@ -1,0 +1,4 @@
+# pnpm 11+ 构建脚本许可：esbuild 为 astro 构建所需原生依赖
+# （pnpm 11 起该设置位于此 workspace 文件）
+allowBuilds:
+  esbuild: true
