@@ -1,0 +1,120 @@
+---
+import OfficialLayout from "../layouts/OfficialLayout.astro";
+
+// ===== 项目大厅索引页（复刻主应用 /official/projects，硬编码示例项目）=====
+
+const projects = [
+  {
+    name: "量子计算模拟平台",
+    initiator: "七月O 发起",
+    typeLabel: "招募中",
+    progress: 40,
+    pinned: true,
+    incubated: true,
+    roles: ["前端开发", "UI 设计师"],
+  },
+  {
+    name: "理科迷知识图谱",
+    initiator: "七月墨染 发起",
+    typeLabel: "招募中",
+    progress: 20,
+    pinned: false,
+    incubated: false,
+    roles: ["后端开发", "内容编辑"],
+  },
+  {
+    name: "科普视频系列制作",
+    initiator: "七月花 发起",
+    typeLabel: "成果展示",
+    progress: 50,
+    pinned: false,
+    incubated: true,
+    roles: [],
+  },
+  {
+    name: "天体观测数据可视化项目",
+    initiator: "七月郁离 发起",
+    typeLabel: "成果展示",
+    progress: 75,
+    pinned: false,
+    incubated: false,
+    roles: [],
+  },
+];
+---
+
+<OfficialLayout title="项目大厅" currentPath="/projects">
+  <div class="relative not-prose scroll-mt-[72px]">
+    <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-16">
+      <div class="space-y-6">
+        <h1 class="text-3xl font-bold text-deep-text">项目大厅</h1>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            projects.map((p) => (
+              <a
+                href="/community"
+                class="profile-card group block"
+              >
+                <div class="profile-inner p-5 flex flex-col gap-3">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h2 class="text-lg font-semibold text-deep-text group-hover:text-primary transition-colors">
+                      {p.name}
+                    </h2>
+                    {p.pinned && (
+                      <span class="text-[10px] px-2 py-0.5 rounded-full bg-primary/15 text-primary font-medium">
+                        置顶
+                      </span>
+                    )}
+                    {p.incubated && (
+                      <span class="text-[10px] px-2 py-0.5 rounded-full bg-warning/15 text-warning font-medium">
+                        七月孵化
+                      </span>
+                    )}
+                  </div>
+
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="text-xs text-text-muted">{p.initiator}</span>
+                    <span
+                      class:list={[
+                        "text-xs px-2 py-0.5 rounded-full font-medium",
+                        p.typeLabel === "招募中"
+                          ? "bg-success/15 text-success"
+                          : "bg-text-muted/15 text-text-muted",
+                      ]}
+                    >
+                      {p.typeLabel}
+                    </span>
+                  </div>
+
+                  <div>
+                    <div class="flex items-center justify-between text-xs text-text-muted mb-1">
+                      <span>进度</span>
+                      <span>{p.progress}%</span>
+                    </div>
+                    <div class="h-1.5 rounded-full bg-surface-3 overflow-hidden">
+                      <div
+                        class="h-full rounded-full bg-primary"
+                        style={`width: ${p.progress}%`}
+                      ></div>
+                    </div>
+                  </div>
+
+                  {p.roles.length > 0 && (
+                    <div class="flex items-center gap-1.5 flex-wrap">
+                      {p.roles.map((r) => (
+                        <span class="text-[11px] px-2 py-0.5 rounded-full bg-page-bg border border-surface-3 text-text-muted">
+                          缺{r}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</OfficialLayout>

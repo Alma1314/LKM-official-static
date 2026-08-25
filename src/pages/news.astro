@@ -1,0 +1,44 @@
+---
+import OfficialLayout from "../layouts/OfficialLayout.astro";
+
+// ===== 新闻资讯索引页（复刻主应用 /official/news，静态硬编码分类）=====
+
+const sections = [
+  { label: "官方公告", slug: "announcement", count: 3 },
+  { label: "科技新闻", slug: "news", count: 5 },
+  { label: "科普相关", slug: "science", count: 2 },
+];
+---
+
+<OfficialLayout title="新闻资讯" currentPath="/news">
+  <div class="relative not-prose scroll-mt-[72px]">
+    <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-16">
+      <div class="space-y-6">
+        <header>
+          <h1 class="text-3xl font-bold text-deep-text">新闻资讯</h1>
+          <p class="mt-2 text-text-muted">官方公告、科技新闻与科普内容</p>
+        </header>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            sections.map((section) => (
+              <a
+                href="/"
+                class="block p-6 bg-card-bg rounded-lg border border-surface-3 hover:border-primary transition-all hover:shadow-lg group"
+              >
+                <div class="flex flex-col h-full">
+                  <h2 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                    {section.label}
+                  </h2>
+                  <p class="text-text-muted text-sm mt-auto">
+                    {section.count > 0 ? `${section.count} 篇文章` : "点击查看该分类文章"}
+                  </p>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</OfficialLayout>
