@@ -1,0 +1,73 @@
+---
+import avatarMap from "../../data/avatar-map.json";
+
+/**
+ * 团队成员卡（复刻主应用 MemberCard）。
+ * avatarKey → avatar-map.json → /images/avatars/tNN.webp；无头像走首字回退。
+ */
+interface Props {
+  name: string;
+  avatarKey?: string;
+  role?: string;
+  desc?: string;
+  dream?: string;
+  quote?: string;
+  size?: "sm" | "lg";
+}
+
+const { name, avatarKey, role, desc, dream, quote, size = "sm" } = Astro.props;
+const isLg = size === "lg";
+
+// avatarKey（如 "七月千寻.jpg"）→ 源文件名；avatar-map 存的是按 key 去扩展名的映射？
+// 说明：avatarKey 与生成脚本中的 key 一致（avatarMap[key]）。
+const avatarSrc =
+  avatarKey && avatarMap[avatarKey]
+    ? `/images/avatars/${avatarMap[avatarKey]}`
+    : undefined;
+
+const fallbackChar = name.replace("七月", "").charAt(0) || name.charAt(0);
+const avatarSize = isLg
+  ? "w-16 h-16 sm:w-24 sm:h-24"
+  : "w-10 h-10 sm:w-16 sm:h-16";
+---
+
+<div class="profile-card">
+  <div class="profile-inner p-4 sm:p-5 flex flex-row items-center gap-3 sm:flex-col sm:items-center text-left sm:text-center">
+    <div class="shrink-0 sm:mb-3">
+      {avatarSrc ? (
+        <img
+          src={avatarSrc}
+          alt={name}
+          class={`${avatarSize} rounded-full object-cover`}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div
+          class={`${avatarSize} rounded-full bg-surface-3 text-text-muted flex items-center justify-center text-lg font-semibold`}
+        >
+          {fallbackChar}
+        </div>
+      )}
+    </div>
+    <div class="flex-1 min-w-0">
+      {isLg ? (
+        <h2 class="text-[21px] font-semibold text-deep-text">{name}</h2>
+      ) : (
+        <h4 class="font-bold text-lg text-deep-text">{name}</h4>
+      )}
+      {role && (
+        <span class={isLg ? "text-primary font-semibold" : "text-xs text-text-muted"}>
+          {role}
+        </span>
+      )}
+      {desc && <p class="text-xs text-text-muted mt-1">{desc}</p>}
+      {dream && (
+        <p class="text-xs text-secondary mt-1 italic">{dream}</p>
+      )}
+      {quote && (
+        <p class="text-xs text-primary/70 mt-1">{quote}</p>
+      )}
+    </div>
+  </div>
+</div>

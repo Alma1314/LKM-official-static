@@ -1,0 +1,36 @@
+---
+import CommunityLayout from "../../layouts/CommunityLayout.astro";
+import Icon from "../../components/community/Icon.astro";
+
+// 社区子功能入口卡片（静态站硬编码中文），镜像主应用 community/index 的入口网格。
+const entries = [
+  { title: "论坛", href: "/community/forum", icon: "forum" },
+  { title: "专栏", href: "/community/columns", icon: "article" },
+  { title: "文件库", href: "/community/files", icon: "folder" },
+  { title: "竞赛", href: "/community/competition", icon: "trophy" },
+];
+---
+
+<CommunityLayout title="社区" currentPath="/community">
+  <div class="space-y-8">
+    <h1 class="text-3xl font-bold">社区</h1>
+    <p class="text-lg text-[var(--deep-text)]/70">
+      与同好一起讨论、创作、参与竞赛。
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {
+        entries.map((e) => (
+          <a
+            href={e.href}
+            class="p-4 border border-[var(--surface-3)] rounded-lg hover:bg-[var(--surface-3)] transition-colors flex items-center gap-3"
+          >
+            <span class="text-[var(--primary)] text-xl">
+              <Icon name={e.icon} class="w-5 h-5" />
+            </span>
+            <span class="font-medium">{e.title}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</CommunityLayout>

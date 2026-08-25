@@ -1,0 +1,46 @@
+---
+import OfficialSidebarLayout from "../layouts/OfficialSidebarLayout.astro";
+import CommunitySection from "../components/official/CommunitySection.astro";
+import CommunityCard from "../components/official/CommunityCard.astro";
+import { communityCategories, communityNote } from "../data/communities";
+
+// ===== QQ 社群页（复刻主应用 /official/communities）=====
+
+const sidebarItems = [
+  { text: "爱好者总群", href: "#general", icon: "users" },
+  { text: "年级分段分群", href: "#grades", icon: "school" },
+  { text: "群体分类分群", href: "#groups", icon: "category" },
+  { text: "自然/基础学科", href: "#basic", icon: "atom" },
+  { text: "应用科学", href: "#applied", icon: "robot" },
+  { text: "兴趣板块社团", href: "#hobby", icon: "palette" },
+  { text: "常驻活动", href: "#events", icon: "calendarStar" },
+  { text: "原始老群", href: "#legacy", icon: "archive" },
+];
+
+const sectionIds = ["general", "grades", "groups", "basic", "applied", "hobby", "events", "legacy"];
+---
+
+<OfficialSidebarLayout
+  title="QQ社群 —— 理科迷"
+  currentPath="/communities"
+  sidebarItems={sidebarItems}
+>
+  {
+    communityCategories.map((cat, i) => (
+      <CommunitySection id={sectionIds[i]} title={cat.label} intro={cat.intro || undefined}>
+        {cat.groups.map((g) => (
+          <CommunityCard
+            name={g.name}
+            qqGroup={g.qqGroup}
+            desc={g.desc}
+            isQQChannel={g.isQQChannel}
+          />
+        ))}
+      </CommunitySection>
+    ))
+  }
+
+  <div class="max-w-7xl mx-auto mt-4 px-4 md:px-6 pb-8">
+    <p class="text-center text-sm text-text-muted/60 italic">{communityNote}</p>
+  </div>
+</OfficialSidebarLayout>

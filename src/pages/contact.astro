@@ -1,0 +1,121 @@
+---
+import OfficialLayout from "../layouts/OfficialLayout.astro";
+import Icon from "../components/community/Icon.astro";
+
+// ===== 联系我们页（复刻主应用 /official/contact，静态展示）=====
+
+const contactItems = [
+  { icon: "usersGroup", title: "加入社区", desc: "理科迷拥有完善的QQ社群体系，涵盖年级分群、学科分群、兴趣社团等数十个群组。", href: "/communities", action: "查看全部社群" },
+  { icon: "heartHandshake", title: "合作建议", desc: "如果你有科普内容合作、活动联办、技术支持等方面的合作意向，欢迎通过留言表单联系我们。" },
+  { icon: "bug", title: "问题反馈", desc: "网站或社区的 Bug 反馈与功能建议，都可以通过留言表单提交，我们会认真处理每一条反馈。" },
+  { icon: "mail", title: "邮箱", desc: "almafox123@outlook.com", href: "mailto:almafox123@outlook.com" },
+  { icon: "github", title: "GitHub", desc: "github.com/LKM-AHZ", href: "https://github.com/LKM-AHZ", external: true },
+  { icon: "brandBilibili", title: "B站", desc: "关注官方B站账号获取最新科普视频", href: "/", external: true },
+];
+---
+
+<OfficialLayout title="联系我们" currentPath="/contact">
+  {/* HeroText */}
+  <section class="relative not-prose">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="py-16 md:py-[80px]">
+        <div class="text-center max-w-5xl mx-auto">
+          <h1 class="text-[40px] md:text-[56px] font-semibold leading-[1.07] tracking-[-0.005em] mb-4 font-heading text-deep-text">
+            期待听到你的声音！
+          </h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 留言表单 */}
+  <section class="relative not-prose scroll-mt-[72px]">
+    <div class="relative mx-auto max-w-7xl px-4 md:px-6 pb-16">
+      <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+        <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
+          给我们留言
+        </h2>
+        <p class="mt-3 text-[17px] text-text-muted">
+          如果你想加入理科迷、提出建议或合作意向，欢迎通过下方表单联系我们。也可以先看看常见问题，也许已经有了你想要的答案。
+        </p>
+      </div>
+
+      <form id="contact-form" method="POST" action="#" class="flex flex-col max-w-xl mx-auto rounded-[12px] bg-page-bg border border-surface-3 p-4 sm:p-6 lg:p-8 w-full">
+        <div class="mb-4">
+          <label for="contact-name" class="block mb-2 text-sm font-medium text-deep-text">你的名字</label>
+          <input id="contact-name" name="name" type="text" class="w-full rounded-[var(--radius-field)] border border-surface-3 bg-base-100 px-4 py-2.5 text-sm text-base-content outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition" />
+        </div>
+        <div class="mb-4">
+          <label for="contact-email" class="block mb-2 text-sm font-medium text-deep-text">电子邮箱</label>
+          <input id="contact-email" name="email" type="email" class="w-full rounded-[var(--radius-field)] border border-surface-3 bg-base-100 px-4 py-2.5 text-sm text-base-content outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition" />
+        </div>
+        <div class="mb-4">
+          <label for="contact-message" class="block mb-2 text-sm font-medium text-deep-text">留言内容</label>
+          <textarea id="contact-message" name="message" rows="5" class="w-full rounded-[var(--radius-field)] border border-surface-3 bg-base-100 px-4 py-2.5 text-sm text-base-content outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"></textarea>
+        </div>
+        <label class="mb-4 flex items-start gap-2 text-xs text-text-muted cursor-pointer">
+          <input type="checkbox" name="agreed" class="mt-0.5 accent-[var(--primary)]" />
+          <span>提交此表单即表示你同意我们收集你的个人信息用于联系回复。</span>
+        </label>
+        <button type="submit" class="btn btn-primary pointer-events-auto">发送留言</button>
+        <p id="form-message" class="mt-3 text-sm text-text-muted text-center"></p>
+        <p class="mt-2 text-xs text-text-muted text-center leading-relaxed">我们通常会在 24 小时内回复你的留言。</p>
+      </form>
+    </div>
+  </section>
+
+  {/* 联系方式 */}
+  <section class="relative not-prose scroll-mt-[72px]">
+    <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-16">
+      <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+        <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
+          联系我们
+        </h2>
+      </div>
+
+      <div class="grid mx-auto gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          contactItems.map((c) => (
+            c.href ? (
+              <a href={c.href} target={c.external ? "_blank" : undefined} rel={c.external ? "noopener" : undefined} class="relative flex flex-col rounded-[12px] bg-page-bg border border-surface-3 p-6 card-hover">
+                <Icon name={c.icon} class="mb-6 w-12 h-12 text-primary" />
+                <h3 class="text-[17px] font-semibold text-deep-text leading-snug">{c.title}</h3>
+                <p class="mt-2 text-[14px] text-text-muted leading-relaxed">{c.desc}</p>
+                {c.action && (
+                  <span class="mt-4 inline-flex items-center gap-1 text-sm text-primary font-medium">
+                    {c.action}
+                    <Icon name="arrowRight" class="w-4 h-4 inline-block" />
+                  </span>
+                )}
+              </a>
+            ) : (
+              <div class="relative flex flex-col rounded-[12px] bg-page-bg border border-surface-3 p-6 card-hover">
+                <Icon name={c.icon} class="mb-6 w-12 h-12 text-primary" />
+                <h3 class="text-[17px] font-semibold text-deep-text leading-snug">{c.title}</h3>
+                <p class="mt-2 text-[14px] text-text-muted leading-relaxed">{c.desc}</p>
+              </div>
+            )
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</OfficialLayout>
+
+<script>
+  // 静态展示表单：不提交，提示后还原
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    const msg = document.getElementById("form-message");
+    if (!form || !msg) return;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      msg.textContent = "此表单为静态展示，暂不支持在线提交。请通过其他方式联系我们。";
+      msg.classList.add("!text-red-500");
+      setTimeout(() => {
+        msg.textContent = "";
+        msg.classList.remove("!text-red-500");
+      }, 4000);
+    });
+  });
+</script>

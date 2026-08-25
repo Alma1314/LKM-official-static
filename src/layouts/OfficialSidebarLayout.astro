@@ -1,0 +1,109 @@
+---
+import "../styles/main.css";
+import OfficialLayout from "./OfficialLayout.astro";
+import Icon from "../components/community/Icon.astro";
+import styles from "../components/community/CommunitySidebar.module.css";
+
+/**
+ * 官网侧栏布局（服务页用）：官方壳顶栏/页脚 + 左侧 #锚点侧栏 + 主内容偏移。
+ * 复用 CommunitySidebar.module.css 的 shell/nav/icon/text/active 视觉。
+ */
+interface SidebarItem {
+  text: string;
+  href: string;
+  icon: string;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPath?: string;
+  sidebarItems?: SidebarItem[];
+}
+
+const {
+  title,
+  description = "理科迷 (LKM) 独立官网",
+  currentPath = "/services",
+  sidebarItems = [],
+} = Astro.props;
+---
+
+<OfficialLayout title={title} description={description} currentPath={currentPath}>
+  <div class="min-h-screen">
+    <nav class={styles.shell} data-page-sidebar aria-label="页面目录">
+      <ul class={styles.nav}>
+        {
+          sidebarItems.map((item) => (
+            <li id={`side-${item.href.slice(1)}`}>
+              <a href={item.href}>
+                <div class={styles.icon}>
+                  <Icon name={item.icon} />
+                </div>
+                <div class={styles.text}>{item.text}</div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <main class={styles.mainShell}>
+      <div class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20 lg:py-24">
+        <slot />
+      </div>
+    </main>
+  </div>
+</OfficialLayout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sidebar = document.querySelector("[data-page-sidebar]");
+    if (!sidebar) return;
+    const links = sidebar.querySelectorAll("a[href^='#']");
+
+    function updateActive(): void {
+      let current = "";
+      for (const sec of document.querySelectorAll("section[id]")) {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= 140) current = sec.id;
+      }
+      links.forEach((a) => {
+        const li = a.closest("li");
+        if (!li) return;
+        const active = li.id === `side-${current}`;
+        li.classList.toggle("pg-active", active);
+      });
+    }
+
+    links.forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || !id.startsWith("#")) return;
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      requestAnimationFrame(updateActive);
+    });
+    updateActive();
+  });
+</script>
+
+<style>
+  /* 页内侧栏 active 气泡（复用主应用 .nav li.active 视觉，独立作用在 .nav li.pg-active） */
+  .pg-active {
+    background: var(--base-200);
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    position: relative;
+  }
+  .pg-active a > div {
+    color: var(--primary);
+  }
+</style>

@@ -1,11 +1,254 @@
 ---
-import BaseLayout from "~/layouts/BaseLayout.astro";
+import OfficialLayout from "../layouts/OfficialLayout.astro";
+import Icon from "../components/community/Icon.astro";
+import { timelineItems } from "../data/timeline";
+
+// ===== 关于页（主应用风格富内容，静态硬编码）=====
+
+// 社区理念卡
+const valueItems = [
+  { icon: "sparkles", title: "打破知识壁垒", desc: "让科学与技术脱离学术象牙塔的刻板与遥远，变成每一位都能够对世界发问的好奇心。" },
+  { icon: "brain", title: "崇尚理性之美", desc: "摆脱功利视角，让更多人迸发对知识的渴望，感受到理工科的美，找到同频的伙伴。" },
+  { icon: "buildingCommunity", title: "共建共享", desc: "每个人都有机会参与建设——加入管理团队、参与项目组、投稿创作、传播推广。" },
+];
+
+// 团队成员（头像已由后端迁移时复制到 public/images/avatars）
+const teamMembers = [
+  { name: "七月O", desc: "中国科学院国家天文台博士，引力波与黑洞物理方向", avatar: "/images/avatars/july-o.webp" },
+  { name: "七月花", desc: "一个有理想的博士，梦想：每个孩子都能接触科学", avatar: "/images/avatars/july-hua.webp" },
+  { name: "七月墨染", desc: "双非物理，卧薪尝胆三千日，大雪深埋终成金", avatar: "/images/avatars/july-moran.webp" },
+  { name: "七月郁离", desc: "群务组组长，群务无小事，用心皆风景", avatar: "/images/avatars/july-yuli.webp" },
+  { name: "七月有枝", desc: "前活动策划组组员，且停且忘且随风，且行且看且从容", avatar: "/images/avatars/july-youzhi.webp" },
+];
 ---
-<BaseLayout title="关于" description="关于理科迷社区">
-  <section class="py-16 max-w-2xl">
-    <h1 class="font-heading text-3xl font-bold mb-4">关于理科迷</h1>
-    <p class="text-[#7a7a7a]">
-      理科迷 (LKM) 创立于 2014 年，是科技爱好者社区，覆盖数学、物理、化学、生物、信息技术等学科。
-    </p>
+
+<OfficialLayout title="关于" description="关于理科迷社区" currentPath="/about">
+  {/* HeroText */}
+  <section class="relative not-prose">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="py-16 md:py-[80px]">
+        <div class="text-center max-w-5xl mx-auto">
+          <h1 class="text-[40px] md:text-[56px] font-semibold leading-[1.07] tracking-[-0.005em] mb-4 font-heading text-deep-text">
+            关于理科迷
+          </h1>
+          <div class="max-w-3xl mx-auto">
+            <p class="text-[17px] text-text-muted mb-6 leading-relaxed">
+              理科迷 (LKM) 创立于 2014 年，是由科技爱好者组成的社区。我们打破专业门槛，让每一位热爱理性、崇尚科技的人都能在这里找到同频的伙伴，共同探索万物运转的奥秘。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
-</BaseLayout>
+
+  {/* ===== 社区理念 ===== */}
+  <section id="values" class="relative not-prose scroll-mt-[72px]">
+    <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20 lg:py-24">
+      <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+        <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
+          让科学回归每一个人
+        </h2>
+        <p class="mt-3 text-[17px] text-text-muted">
+          我们相信，科学与技术应当触手可及，而非高高在上。
+        </p>
+      </div>
+      <div class="grid mx-auto gap-5 md:gap-6 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          valueItems.map((c) => (
+            <div class="relative flex flex-col rounded-[12px] bg-page-bg border border-surface-3 p-6 card-hover">
+              <div class="flex justify-center">
+                <Icon name={c.icon} class="mb-6 w-12 h-12 text-primary" />
+              </div>
+              <h3 class="text-[17px] font-semibold text-deep-text leading-snug text-center">{c.title}</h3>
+              <p class="mt-2 text-[14px] text-text-muted leading-relaxed text-center">{c.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ===== 我们的团队 ===== */}
+  <section id="team" class="relative not-prose scroll-mt-[72px]">
+    <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20 lg:py-24">
+      <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+        <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
+          我们的团队
+        </h2>
+        <p class="mt-3 text-[17px] text-text-muted">
+          理科迷因为有你，所以更加精彩。
+        </p>
+      </div>
+      <div class="grid gap-5 md:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          teamMembers.map((m) => (
+            <div class="profile-card">
+              <div class="profile-inner p-4 sm:p-5 flex flex-row items-center gap-3 sm:flex-col sm:items-center text-left sm:text-center rounded-lg">
+                <img src={m.avatar} alt={m.name} width={96} height={96} class="w-10 h-10 sm:w-16 sm:h-16 rounded-full object-cover shrink-0 sm:mb-3" loading="lazy" decoding="async" />
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-bold text-lg text-deep-text">{m.name}</h3>
+                  <p class="text-xs text-text-muted mt-1">{m.desc}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+        <a href="/team" class="profile-card">
+          <div class="profile-inner p-4 sm:p-5 flex flex-col items-center justify-center text-center gap-3 min-h-full rounded-lg">
+            <span class="text-lg font-bold text-deep-text">更多成员</span>
+            <span class="text-xs text-text-muted">点击查看完整管理团队</span>
+            <span class="not-hover-color inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-semibold leading-6 text-on-primary bg-primary">查看全部 →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== 发展历程 ===== */}
+  <section id="timeline" class="relative not-prose scroll-mt-[72px]">
+    <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20 lg:py-24">
+      <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
+        <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
+          发展历程
+        </h2>
+        <p class="mt-3 text-[17px] text-text-muted">
+          物换星移，春秋代序。
+        </p>
+      </div>
+
+      <div class="ct-root" data-clock-timeline>
+        <div class="ct-layout">
+          <div class="ct-cards-col" data-ct-cards-col>
+            <div class="ct-cards-viewport">
+              <div class="ct-cards-track" data-ct-cards-track>
+                {
+                  timelineItems.map((item) => (
+                    <div class="ct-card">
+                      <div class="ct-card-body">
+                        <div class="font-mono text-[28px] font-bold text-primary mb-2">{item.year}</div>
+                        <div class="text-[30px] font-semibold text-neutral-800 border-b border-primary pb-2 mb-3">{item.title}</div>
+                        <div class="text-[15px] leading-relaxed text-neutral-600">{item.description}</div>
+                      </div>
+                      <div class="ct-arrows ct-arrows-mobile">
+                        <button class="ct-arrow" data-ct-arrow="prev" aria-label="上一条">
+                          <Icon name="chevronUp" class="h-6 w-6" />
+                        </button>
+                        <button class="ct-arrow" data-ct-arrow="next" aria-label="下一条">
+                          <Icon name="chevronDown" class="h-6 w-6" />
+                        </button>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+            <div class="ct-arrows ct-arrows-desktop">
+              <button class="ct-arrow" data-ct-arrow="prev" aria-label="上一条">
+                <Icon name="chevronUp" class="h-6 w-6" />
+              </button>
+              <button class="ct-arrow" data-ct-arrow="next" aria-label="下一条">
+                <Icon name="chevronDown" class="h-6 w-6" />
+              </button>
+            </div>
+          </div>
+
+          <div class="ct-clock-col" data-ct-clock-col>
+            <div class="clock-face">
+              <div class="clock-pointer" data-ct-pointer>
+                <div class="clock-pointer-line"></div>
+              </div>
+              {
+                timelineItems.map((item, i) => {
+                  const step = 360 / timelineItems.length;
+                  const year = (item.year.match(/^\d{4}/) || [item.year])[0];
+                  return (
+                    <div class="clock-tick cursor-pointer flex items-center" style={`transform: rotate(${i * step}deg)`}>
+                      <div class="clock-tick-mark flex items-center justify-center text-neutral-600" data-ct-tick={i}>
+                        <span class="clock-tick-year text-neutral-600 leading-none">{year}</span>
+                      </div>
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== 行动号召 ===== */}
+  <section class="relative not-prose">
+    <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20 lg:py-24">
+      <div class="max-w-3xl mx-auto text-center p-8 rounded-[12px] bg-page-bg border border-surface-3 card-hover">
+        <div class="mb-0">
+          <h2 class="text-[40px] font-semibold tracking-[-0.005em] mb-3 font-heading">
+            欢迎加入<span class="text-[#6C2AD8]">理科迷</span>
+          </h2>
+          <p class="text-[17px] text-text-muted">
+            无论你是想学习交流、参与创作，还是加入我们的团队，理科迷都欢迎你。
+          </p>
+        </div>
+        <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6">
+          <div class="flex w-full sm:w-auto">
+            <a href="/services" class="btn btn-primary w-full sm:mb-0 pointer-events-auto">
+              了解服务
+              <Icon name="arrowRight" class="w-5 h-5 inline-block" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</OfficialLayout>
+
+<script>
+  // 钟表时间线交互
+  document.addEventListener("DOMContentLoaded", () => {
+    function initClockTimeline(root: HTMLElement): void {
+      const track = root.querySelector("[data-ct-cards-track]") as HTMLElement;
+      const clockCol = root.querySelector("[data-ct-clock-col]") as HTMLElement;
+      const allPrevBtns = root.querySelectorAll("[data-ct-arrow='prev']");
+      const allNextBtns = root.querySelectorAll("[data-ct-arrow='next']");
+      if (!track || !clockCol || allPrevBtns.length === 0 || allNextBtns.length === 0) return;
+
+      const total = track.querySelectorAll(".ct-card").length;
+      let currentIndex = 0;
+      const angleStep = 360 / total;
+      const firstCard = track.querySelector(".ct-card") as HTMLElement;
+      const cardHeight = firstCard
+        ? firstCard.getBoundingClientRect().height
+        : (track.parentElement as HTMLElement).clientHeight;
+
+      function update(): void {
+        track.style.transform = `translate3d(0, -${currentIndex * cardHeight}px, 0)`;
+        const pointer = clockCol.querySelector(".clock-pointer") as HTMLElement;
+        if (pointer) pointer.style.transform = `rotate(${currentIndex * angleStep}deg)`;
+        clockCol.querySelectorAll("[data-ct-tick]").forEach((el) => {
+          const idx = parseInt(el.getAttribute("data-ct-tick") || "0");
+          el.classList.toggle("clock-tick-active", idx === currentIndex);
+        });
+      }
+
+      allPrevBtns.forEach((btn) => btn.addEventListener("click", () => {
+        currentIndex = currentIndex <= 0 ? total - 1 : currentIndex - 1;
+        update();
+      }));
+      allNextBtns.forEach((btn) => btn.addEventListener("click", () => {
+        currentIndex = currentIndex >= total - 1 ? 0 : currentIndex + 1;
+        update();
+      }));
+      clockCol.querySelectorAll("[data-ct-tick]").forEach((tick) => tick.addEventListener("click", () => {
+        const idx = parseInt(tick.getAttribute("data-ct-tick") || "0");
+        currentIndex = idx;
+        update();
+      }));
+
+      update();
+    }
+
+    document.querySelectorAll("[data-clock-timeline]").forEach((el) => {
+      initClockTimeline(el as HTMLElement);
+    });
+  });
+</script>

@@ -1,0 +1,39 @@
+---
+/**
+ * 部门区块（复刻主应用 DepartmentSection）：
+ * 带 scroll-mt 锚点 id 的 section + 下划线居中标题 + desc 提示框 + 默认三列/自定义网格。
+ */
+interface Props {
+  id: string;
+  title: string;
+  /** 标题下划线颜色 */
+  borderColor: string;
+  desc?: string;
+  /** true 时跳过默认三列网格，由 slot 自定义布局（子分组等） */
+  noGrid?: boolean;
+}
+
+const { id, title, borderColor, desc, noGrid = false } = Astro.props;
+---
+
+<section id={id} class="relative not-prose scroll-mt-[72px]">
+  <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-16 md:py-20 lg:py-24">
+    <h3 class="text-xl font-bold mb-5 text-center">
+      <span class="border-b-2 pb-1" style={`border-color: ${borderColor}`}>
+        {title}
+      </span>
+    </h3>
+    {desc && (
+      <p class="max-w-3xl mx-auto mb-9 px-6 py-4 bg-page-bg border border-surface-3 rounded-[8px] text-center text-[14px] text-text-muted leading-relaxed card-hover">
+        {desc}
+      </p>
+    )}
+    {noGrid ? (
+      <slot />
+    ) : (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <slot />
+      </div>
+    )}
+  </div>
+</section>

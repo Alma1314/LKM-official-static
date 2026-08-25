@@ -9,6 +9,13 @@
 
 @plugin '@tailwindcss/typography';
 
+/* 暗色模式下全局文字颜色自动适配 */
+@layer base {
+  .dark .text-deep-text {
+    color: oklch(0.85 0.01 var(--hue, 250));
+  }
+}
+
 /* 暗色模式变体 — 使用 :root.dark / [data-theme='dark'] */
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -31,4 +38,493 @@
   --radius-lg: 12px;
   --radius-xl: 16px;
   --radius-pill: 9999px;
+
+  /* ── 主题色 Token — 让 Tailwind 识别语义化颜色工具类（与主应用一致） ── */
+  --color-base-100: var(--base-100);
+  --color-base-200: var(--base-200);
+  --color-base-300: var(--base-300);
+  --color-base-content: var(--base-content);
+  --color-neutral: var(--neutral);
+  --color-neutral-content: var(--neutral-content);
+  --color-primary-content: var(--primary-content);
+  --color-card-bg: var(--card-bg);
+  --color-page-bg: var(--page-bg);
+  --color-surface-3: var(--surface-3);
+  --color-deep-text: var(--deep-text);
+  --color-text-muted: var(--text-muted);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  --color-info: var(--info);
+  --color-on-info: var(--on-info);
+  --color-success: var(--success);
+  --color-on-success: var(--on-success);
+  --color-warning: var(--warning);
+  --color-on-warning: var(--on-warning);
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+}
+
+/* ===== 基础排版（复刻主应用 @layer base）===== */
+@layer base {
+  html,
+  body {
+    letter-spacing: -0.022em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-base-100);
+    color: var(--color-base-content);
+  }
+
+  p {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.47;
+    letter-spacing: -0.022em;
+    margin-bottom: 1.25rem;
+    color: var(--color-base-content);
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.07;
+    letter-spacing: -0.005em;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+
+  h3 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.14;
+    letter-spacing: 0.004em;
+  }
+
+  h4 {
+    font-family: var(--font-heading);
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.19;
+    letter-spacing: 0.011em;
+  }
+
+  h5 {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.24;
+    letter-spacing: -0.022em;
+  }
+
+  h6 {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.29;
+    letter-spacing: -0.016em;
+  }
+}
+
+/* 团队成员/项目团队卡片 */
+@utility profile-card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--surface-3);
+  box-shadow:
+    0 8px 32px 0 color-mix(in srgb, var(--color-primary) 12%, transparent),
+    0 0 0 0px transparent;
+  overflow: hidden;
+}
+
+.profile-card,
+.profile-card .profile-inner,
+.profile-card img {
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out);
+}
+
+.profile-card:hover > .profile-inner {
+  transform: translateY(-5px);
+}
+
+.profile-card:hover {
+  box-shadow:
+    0 16px 48px 0 color-mix(in srgb, var(--color-primary) 25%, transparent),
+    0 0 0 2px color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.profile-card:hover img {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+
+.dark .profile-card,
+.dark .profile-card:hover {
+  box-shadow: none;
+}
+
+/* 通用卡片 hover（Features2 / CallToAction 等） */
+@utility card-hover {
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card-hover:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(
+      in srgb,
+      var(--color-base-content) 20%,
+      transparent
+    );
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+  .dark .card-hover:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ===== 钟表时间线组件 ===== */
+@layer components {
+  .ct-root {
+    width: 100%;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1100px;
+  }
+
+  .ct-layout {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    overflow: visible;
+  }
+
+  .ct-cards-col {
+    flex: 0 0 38%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .ct-cards-viewport {
+    overflow: hidden;
+    height: 360px;
+    flex: 1;
+  }
+
+  .ct-cards-track {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.8s ease-in-out;
+    will-change: transform;
+  }
+
+  .ct-card {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 0.5rem;
+    min-height: 360px;
+    position: relative;
+  }
+
+  .ct-arrows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .ct-arrows-desktop {
+    flex-shrink: 0;
+  }
+
+  .ct-arrows-mobile {
+    display: none;
+  }
+
+  .ct-card-body {
+    flex: 1;
+  }
+
+  .ct-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
+    background: var(--color-base-100);
+    color: var(--color-primary);
+    cursor: pointer;
+    transition:
+      background 0.2s var(--ease),
+      color 0.2s var(--ease),
+      border-color 0.2s var(--ease);
+  }
+
+  .ct-arrow:hover {
+    background: var(--color-primary);
+    color: var(--color-primary-content);
+  }
+
+  .ct-clock-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+  }
+
+  .clock-face {
+    position: relative;
+    width: 420px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 4px solid var(--color-primary);
+    background-color: var(--color-base-100);
+    box-shadow: 0 0 60px
+      color-mix(in srgb, var(--color-primary) 15%, transparent);
+    margin: 40px;
+  }
+
+  .clock-face::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    transform: translate(-50%, -50%);
+    z-index: 11;
+  }
+
+  .clock-pointer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 38%;
+    height: 0;
+    z-index: 10;
+    transform-origin: left center;
+    transition: transform 0.8s ease-in-out;
+    will-change: transform;
+  }
+
+  .clock-pointer-line {
+    position: absolute;
+    top: -3px;
+    right: 0;
+    width: 100%;
+    height: 6px;
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
+
+  .clock-tick {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 0;
+    transform-origin: left center;
+  }
+
+  .clock-tick-mark {
+    position: absolute;
+    right: 40%;
+    top: 50%;
+    width: 5%;
+    height: 2px;
+    background-color: var(--color-primary);
+    opacity: 0.25;
+    transition: opacity 0.3s;
+    will-change: opacity;
+  }
+
+  .clock-tick-active {
+    opacity: 1;
+  }
+
+  .clock-tick-year {
+    position: absolute;
+    top: -11px;
+    left: calc(90% + 4px);
+    font-size: 22px;
+    font-family: ui-monospace, monospace;
+    color: oklch(0.3 0.01 var(--hue, 250));
+    white-space: nowrap;
+  }
+
+  .clock-tick-active .clock-tick-year {
+    opacity: 1;
+    font-weight: 700;
+    font-size: 24px;
+  }
+}
+
+/* 钟表时间线移动端适配（不可放 @layer components 内，Tailwind v4 会丢弃嵌套 @media） */
+@media (max-width: 767px) {
+  .ct-layout {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ct-clock-col {
+    width: 100%;
+    order: -1;
+    display: flex;
+    justify-content: center;
+    padding: 48px 0 36px;
+  }
+
+  .ct-clock-col .clock-face {
+    width: 300px;
+    border-width: 3px;
+  }
+
+  .clock-pointer-line {
+    height: 4px;
+  }
+
+  .clock-tick-mark {
+    width: 3%;
+  }
+
+  .clock-tick-active {
+    width: 5%;
+  }
+
+  .clock-tick-year {
+    font-size: 14px;
+    top: -7px;
+  }
+
+  .clock-tick-active .clock-tick-year {
+    font-size: 15px;
+  }
+
+  .ct-cards-col {
+    flex: 1 1 100%;
+    width: 100%;
+    position: relative;
+  }
+
+  .ct-cards-viewport {
+    height: 380px;
+  }
+
+  .ct-card {
+    min-height: 380px;
+    padding: 0;
+  }
+
+  .ct-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .ct-arrows-desktop {
+    display: none;
+  }
+
+  .ct-arrows-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+}
+
+/* ===== 按钮组件（替代 daisyUI btn） ===== */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-medium rounded-[var(--radius-field)]
+           no-underline select-none cursor-pointer
+           min-h-[2.5rem] px-4 text-sm leading-none
+           active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-2;
+    transition:
+      transform var(--duration-base) var(--ease-out),
+      background var(--duration-base) var(--ease),
+      color var(--duration-base) var(--ease),
+      filter var(--duration-base) var(--ease),
+      box-shadow var(--duration-base) var(--ease);
+  }
+  .btn-xs {
+    @apply min-h-[1.5rem] px-2 text-xs;
+  }
+  .btn-sm {
+    @apply min-h-[2rem] px-3 text-sm;
+  }
+  .btn-md {
+    @apply min-h-[2.5rem] px-4 text-sm;
+  }
+  .btn-lg {
+    @apply min-h-[3rem] px-6 text-base;
+  }
+  .btn-primary {
+    @apply bg-[var(--primary)] text-[var(--on-primary)]
+           hover:brightness-110 active:brightness-90;
+  }
+  .btn-secondary {
+    @apply bg-[var(--secondary)] text-[var(--on-secondary)]
+           hover:brightness-110 active:brightness-90;
+  }
+  .btn-neutral {
+    @apply bg-[var(--neutral)] text-white
+           hover:brightness-110 active:brightness-90;
+  }
+  .btn-link {
+    @apply bg-transparent text-[var(--primary)] underline underline-offset-4
+           hover:brightness-110 active:brightness-90;
+  }
+  .btn-accent {
+    @apply bg-[var(--primary)] text-[var(--on-primary)]
+           hover:brightness-110 active:brightness-90;
+  }
+  .btn-success {
+    @apply bg-[var(--success)] text-[var(--on-success)]
+           hover:brightness-110 active:brightness-90;
+  }
+  .btn-info {
+    @apply bg-[var(--info)] text-[var(--on-info)]
+           hover:brightness-110 active:brightness-90;
+  }
+  .btn-warning {
+    @apply bg-[var(--warning)] text-[var(--on-warning)]
+           hover:brightness-110 active:brightness-90;
+  }
+  .btn-error {
+    @apply bg-[var(--error)] text-[var(--on-error)]
+           hover:brightness-110 active:brightness-90;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-[var(--text-muted)]
+           hover:bg-[var(--page-bg)] active:bg-[var(--surface-3)];
+  }
+  .btn-outline {
+    @apply bg-transparent border border-[var(--text-muted)] text-[var(--text-muted)]
+           hover:bg-[var(--text-muted)] hover:text-[var(--deep-text)]
+           active:bg-[var(--text-muted)] active:text-[var(--deep-text)];
+  }
+  .btn-disabled {
+    @apply opacity-50 pointer-events-none;
+  }
 }

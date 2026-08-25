@@ -1,0 +1,60 @@
+---
+import OfficialSidebarLayout from "../layouts/OfficialSidebarLayout.astro";
+import MemberCard from "../components/official/MemberCard.astro";
+import DepartmentSection from "../components/official/DepartmentSection.astro";
+import team from "../data/team-members.json";
+
+// ===== 项目团队页（复刻主应用 /official/project-team，数据来自 members.json）=====
+
+const sidebarItems = [
+  { text: "教材项目组", href: "#textbooks", icon: "books" },
+  { text: "科普项目组", href: "#science", icon: "flask" },
+];
+
+const pg = (team.subGroupMaps as Record<string, any>).projectSubGroups ?? {};
+const groups = Object.entries(pg).map(([key, g]) => ({
+  key,
+  label: g.label,
+  desc: g.desc,
+  members: g.members ?? [],
+}));
+
+const borderColor: Record<string, string> = {
+  textbooks: "#14b8a6",
+  science: "#a855f7",
+};
+---
+
+<OfficialSidebarLayout
+  title="项目团队 —— 理科迷"
+  currentPath="/project-team"
+  sidebarItems={sidebarItems}
+>
+  {
+    groups.map((group) => (
+      <DepartmentSection
+        id={group.key}
+        title={group.label}
+        borderColor={borderColor[group.key] ?? "#a855f7"}
+        desc={group.desc}
+      >
+        {group.members.length > 0 ? (
+          group.members.map((m) => (
+            <MemberCard
+              name={m.name}
+              avatarKey={m.avatarKey}
+              role={m.role}
+              desc={m.desc}
+              dream={m.dream}
+              quote={m.quote}
+            />
+          ))
+        ) : (
+          <p class="col-span-full text-center text-sm text-text-muted/50 py-6">
+            暂无成员，期待你的加入
+          </p>
+        )}
+      </DepartmentSection>
+    ))
+  }
+</OfficialSidebarLayout>

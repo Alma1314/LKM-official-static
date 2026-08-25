@@ -1,0 +1,66 @@
+---
+import OfficialLayout from "../layouts/OfficialLayout.astro";
+
+// ===== 资助系统页（复刻主应用 /official/funding，静态硬编码）=====
+---
+
+<OfficialLayout title="资助系统 —— 理科迷" currentPath="/funding">
+  <div class="max-w-2xl mx-auto text-center py-12">
+    {/* 插画区 */}
+    <div class="mb-8">
+      <div class="w-32 h-32 mx-auto rounded-full bg-primary/5 flex items-center justify-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="64"
+          height="64"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-primary/40"
+        >
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+        </svg>
+      </div>
+    </div>
+
+    <h1 class="text-3xl font-bold text-deep-text mb-3">系统筹备中</h1>
+
+    <p class="text-text-muted mb-8 max-w-md mx-auto leading-relaxed">
+      理科迷致力于收支平衡后的可持续发展。<br />
+      平台运行至今，由管理团队自费支撑服务器、域名等运营成本。<br />
+      我们计划在平台稳定运营后启动正式资助系统。
+    </p>
+
+    <div class="bg-card-bg border border-surface-3 rounded-xl p-6 mb-8 max-w-md mx-auto text-left text-sm">
+      <h3 class="font-semibold text-deep-text mb-2">关于运营成本</h3>
+      <ul class="space-y-2 text-text-muted">
+        <li class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0"></span>服务器与域名费用
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0"></span>文件存储与 CDN 带宽
+        </li>
+        <li class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0"></span>短信与邮件服务
+        </li>
+      </ul>
+    </div>
+
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 max-w-md mx-auto text-sm">
+      <p class="text-amber-800 leading-relaxed">
+        <strong>感谢每一位支持理科迷的你</strong><br />
+        我们承诺所有资金使用公开透明，定期发布财务报告。如有赞助意向，欢迎联系我们。
+      </p>
+    </div>
+
+    <button
+      class="mt-8 btn-primary px-8 py-3 rounded-xl text-base font-semibold opacity-50 cursor-not-allowed"
+      disabled
+    >
+      暂未开放
+    </button>
+  </div>
+</OfficialLayout>

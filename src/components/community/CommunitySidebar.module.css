@@ -1,0 +1,233 @@
+/* ===== 社区外壳侧边栏（复刻 LKM-official-website 的 Sidebar.module.css，去掉 daisyUI 依赖）===== */
+
+/* 容器定位/背景/边框：样式复刻主应用 inline 类：
+   fixed top-72px left-0 h+pl-2 border-r border-base-300 bg-base-100 */
+.shell {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  height: calc(100vh - 72px);
+  width: 240px;
+  background: var(--base-100);
+  z-index: 10;
+  padding-left: 8px;
+  overflow: hidden;
+  border-right: 1px solid var(--base-300);
+  transition: width 0.3s;
+}
+
+:global(html.sidebar-collapsed) .shell {
+  width: 67px;
+}
+
+/* 主内容区偏移：随展开/收起切换（桌面端 240/67） */
+.mainShell {
+  padding-left: 240px;
+  transition: padding-left 0.3s;
+}
+
+:global(html.sidebar-collapsed) .mainShell {
+  padding-left: 67px;
+}
+
+/* 移动端：更窄 + 默认收起 */
+@media (max-width: 767px) {
+  .shell {
+    width: 200px;
+    padding-left: 4px;
+  }
+  :global(html.sidebar-collapsed) .shell {
+    width: 50px;
+    padding-left: 4px;
+  }
+  .mainShell {
+    padding-left: 200px;
+  }
+  :global(html.sidebar-collapsed) .mainShell {
+    padding-left: 50px;
+  }
+  .icon {
+    min-width: 36px;
+    height: 30px;
+  }
+  .icon svg {
+    width: 14px;
+    height: 14px;
+  }
+  .text {
+    height: 30px;
+    font-size: 13px;
+    padding-left: 8px;
+  }
+  .toggle {
+    height: 32px;
+  }
+  .toggle svg {
+    flex-shrink: 0;
+    width: 16px;
+  }
+}
+
+/* 导航列表 */
+.nav {
+  position: relative;
+  height: calc(100vh - 72px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  position: relative;
+  padding: 5px;
+}
+
+.nav li a {
+  position: relative;
+  display: flex;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* 图标 */
+.icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 48px;
+  height: 35px;
+  color: var(--primary);
+  transition: 0.5s;
+}
+
+.icon svg {
+  width: 16px;
+  height: 16px;
+  z-index: 1;
+}
+
+/* 文字 */
+.text {
+  position: relative;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--deep-text);
+  padding-left: 12px;
+  letter-spacing: 0;
+  transition: 0.5s;
+}
+
+/* hover 高亮 */
+.nav li:hover .icon,
+.nav li:hover .text {
+  color: var(--warning);
+}
+
+/* active 状态 — 气泡圆角背景 */
+.nav li.active {
+  background: var(--base-200);
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.nav li.active::before {
+  content: "";
+  position: absolute;
+  top: -19px;
+  right: 0;
+  width: 19px;
+  height: 19px;
+  border-bottom-right-radius: 16px;
+  box-shadow: 3px 3px 0 3px var(--base-200);
+  background: transparent;
+}
+
+.nav li.active::after {
+  content: "";
+  position: absolute;
+  bottom: -19px;
+  right: 0;
+  width: 19px;
+  height: 19px;
+  border-top-right-radius: 16px;
+  box-shadow: 3px -3px 0 3px var(--base-200);
+  background: transparent;
+}
+
+/* active 图标圆形边框 */
+.nav li.active .icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 29px;
+  height: 29px;
+  background: var(--base-100);
+  border-radius: 50%;
+  transition: 0.5s;
+  border: 3px solid var(--primary);
+  box-sizing: border-box;
+}
+
+/* 底部开合按钮 */
+.toggle {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 16px);
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0;
+  border: 1px solid var(--base-300);
+  border-radius: 8px;
+  background: var(--base-200);
+  color: var(--deep-text);
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.toggle:hover {
+  background: var(--base-300);
+  color: var(--primary);
+}
+
+.toggle svg {
+  flex-shrink: 0;
+  width: 16px;
+  transition: transform 0.3s;
+}
+
+.toggleSpan {
+  white-space: nowrap;
+  font-size: 12px;
+  transition: 0.3s;
+}
+
+/* 展开态箭头旋转 180°；收起态居中 */
+.shell .toggle svg {
+  transform: rotate(180deg);
+}
+
+:global(html.sidebar-collapsed) .toggle svg {
+  transform: none;
+}
+
+:global(html.sidebar-collapsed) .toggle {
+  width: 36px;
+  border-radius: 50%;
+  gap: 0;
+}
+
+:global(html.sidebar-collapsed) .toggleSpan {
+  display: none;
+}
