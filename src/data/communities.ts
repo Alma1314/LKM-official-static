@@ -253,4 +253,5 @@ export const communityCategories: CommunityCategory[] = [
 ];
 
 // 页脚注（主应用 i18n 键未定义，静态站自拟）
-export const communityNote = "注：以上群组均为理科迷官方群，加入后请遵守群规。群号可以直接复制使用。";
+export const communityNote =
+  "注：以上群组均为理科迷官方群，加入后请遵守群规。群号可以直接复制使用。";

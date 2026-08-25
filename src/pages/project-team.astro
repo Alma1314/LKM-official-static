@@ -3,6 +3,7 @@ import OfficialSidebarLayout from "../layouts/OfficialSidebarLayout.astro";
 import MemberCard from "../components/official/MemberCard.astro";
 import DepartmentSection from "../components/official/DepartmentSection.astro";
 import team from "../data/team-members.json";
+import type { SubGroupMaps, TeamSubGroup } from "../data/team-types";
 
 // ===== 项目团队页（复刻主应用 /official/project-team，数据来自 members.json）=====
 
@@ -11,10 +12,11 @@ const sidebarItems = [
   { text: "科普项目组", href: "#science", icon: "flask" },
 ];
 
-const pg = (team.subGroupMaps as Record<string, any>).projectSubGroups ?? {};
+const sg = team.subGroupMaps as SubGroupMaps;
+const pg: Record<string, TeamSubGroup> = sg.projectSubGroups ?? {};
 const groups = Object.entries(pg).map(([key, g]) => ({
   key,
-  label: g.label,
+  label: g.label ?? "",
   desc: g.desc,
   members: g.members ?? [],
 }));
@@ -41,7 +43,7 @@ const borderColor: Record<string, string> = {
         {group.members.length > 0 ? (
           group.members.map((m) => (
             <MemberCard
-              name={m.name}
+              name={m.name ?? ""}
               avatarKey={m.avatarKey}
               role={m.role}
               desc={m.desc}

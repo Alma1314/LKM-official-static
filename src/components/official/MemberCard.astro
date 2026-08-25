@@ -18,12 +18,11 @@ interface Props {
 const { name, avatarKey, role, desc, dream, quote, size = "sm" } = Astro.props;
 const isLg = size === "lg";
 
-// avatarKey（如 "七月千寻.jpg"）→ 源文件名；avatar-map 存的是按 key 去扩展名的映射？
-// 说明：avatarKey 与生成脚本中的 key 一致（avatarMap[key]）。
-const avatarSrc =
-  avatarKey && avatarMap[avatarKey]
-    ? `/images/avatars/${avatarMap[avatarKey]}`
-    : undefined;
+// avatarKey（如 "七月千寻.jpg"）→ 源文件名；avatar-map 存按 key 的映射。
+const avatarName = avatarKey
+  ? avatarMap[avatarKey as keyof typeof avatarMap]
+  : undefined;
+const avatarSrc = avatarName ? `/images/avatars/${avatarName}` : undefined;
 
 const fallbackChar = name.replace("七月", "").charAt(0) || name.charAt(0);
 const avatarSize = isLg

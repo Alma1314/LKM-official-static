@@ -1,0 +1,9 @@
+dist
+node_modules
+.astro
+.github
+.claude
+pnpm-lock.yaml
+LICENSE.md
+src/data/team-members.json
+src/data/avatar-map.json

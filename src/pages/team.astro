@@ -3,6 +3,7 @@ import OfficialSidebarLayout from "../layouts/OfficialSidebarLayout.astro";
 import MemberCard from "../components/official/MemberCard.astro";
 import DepartmentSection from "../components/official/DepartmentSection.astro";
 import team from "../data/team-members.json";
+import type { MemberLists, SubGroupMaps } from "../data/team-types";
 
 // ===== 团队页（复刻主应用 /official/team，数据来自 members.json 静态 import）=====
 
@@ -18,8 +19,8 @@ const sidebarItems = [
   { text: "已离开成员", href: "#alumni", icon: "userX" },
 ];
 
-const ml = team.memberLists as Record<string, any[]>;
-const sg = team.subGroupMaps as Record<string, Record<string, any>>;
+const ml = team.memberLists as MemberLists;
+const sg = team.subGroupMaps as SubGroupMaps;
 ---
 
 <OfficialSidebarLayout
@@ -40,7 +41,7 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
         {
           ml.founderMembers?.map((m) => (
             <MemberCard
-              name={m.name}
+              name={m.name ?? ""}
               avatarKey={m.avatarKey}
               role={m.role}
               desc={m.desc}
@@ -64,7 +65,7 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
     {
       ml.generalMembers?.map((m) => (
         <MemberCard
-          name={m.name}
+          name={m.name ?? ""}
           avatarKey={m.avatarKey}
           role={m.role}
           desc={m.desc}
@@ -84,15 +85,15 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
     noGrid
   >
     {
-      Object.entries(sg.affairsSubGroups ?? {}).map(([key, group]) => (
-        <div class="mb-12" key={key}>
+      Object.entries(sg.affairsSubGroups ?? {}).map(([, group]) => (
+        <div class="mb-12">
           <h4 class="text-md font-bold mb-3 text-center text-text-muted">
             {group.label}
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {group.members?.map((m) => (
               <MemberCard
-                name={m.name}
+                name={m.name ?? ""}
                 avatarKey={m.avatarKey}
                 role={m.role}
                 desc={m.desc}
@@ -116,7 +117,7 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
     {
       ml.eventsMembers?.map((m) => (
         <MemberCard
-          name={m.name}
+          name={m.name ?? ""}
           avatarKey={m.avatarKey}
           role={m.role}
           desc={m.desc}
@@ -139,7 +140,7 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
       {
         ml.newsMembers?.map((m) => (
           <MemberCard
-            name={m.name}
+            name={m.name ?? ""}
             avatarKey={m.avatarKey}
             role={m.role}
             desc={m.desc}
@@ -150,8 +151,8 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
       }
     </div>
     {
-      Object.entries(sg.newsSubGroups ?? {}).map(([key, group]) => (
-        <div class="mt-8" key={key}>
+      Object.entries(sg.newsSubGroups ?? {}).map(([, group]) => (
+        <div class="mt-8">
           <h4 class="text-md font-bold mb-3 text-center text-text-muted">
             {group.label}
           </h4>
@@ -163,7 +164,7 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {group.members?.map((m) => (
               <MemberCard
-                name={m.name}
+                name={m.name ?? ""}
                 avatarKey={m.avatarKey}
                 role={m.role}
                 desc={m.desc}
@@ -187,7 +188,7 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
     {
       ml.advisorMembers?.map((m) => (
         <MemberCard
-          name={m.name}
+          name={m.name ?? ""}
           avatarKey={m.avatarKey}
           role={m.role}
           desc={m.desc}
@@ -207,15 +208,15 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
     noGrid
   >
     {
-      Object.entries(sg.professionalSubGroups ?? {}).map(([key, group]) => (
-        <div class="mb-12" key={key}>
+      Object.entries(sg.professionalSubGroups ?? {}).map(([, group]) => (
+        <div class="mb-12">
           <h4 class="text-md font-bold mb-3 text-center text-text-muted">
             {group.label}
           </h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {group.members?.map((m) => (
               <MemberCard
-                name={m.name}
+                name={m.name ?? ""}
                 avatarKey={m.avatarKey}
                 role={m.role}
                 desc={m.desc}
@@ -239,7 +240,7 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
     {
       ml.techMembers?.map((m) => (
         <MemberCard
-          name={m.name}
+          name={m.name ?? ""}
           avatarKey={m.avatarKey}
           role={m.role}
           desc={m.desc}
@@ -263,7 +264,7 @@ const sg = team.subGroupMaps as Record<string, Record<string, any>>;
         {
           ml.alumniMembers?.map((m) => (
             <MemberCard
-              name={m.name}
+              name={m.name ?? ""}
               avatarKey={m.avatarKey}
               role={m.role}
               desc={m.desc}

@@ -12,13 +12,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
-const SRC_AVATARS = path.join(
-  ROOT,
-  "..",
-  "LKM-service",
-  "static",
-  "avatars",
-);
+const SRC_AVATARS = path.join(ROOT, "..", "LKM-service", "static", "avatars");
 const DST_DIR = path.join(ROOT, "public", "images", "avatars");
 const DATA_FILE = path.join(ROOT, "src", "data", "team-members.json");
 const MAP_FILE = path.join(ROOT, "src", "data", "avatar-map.json");
