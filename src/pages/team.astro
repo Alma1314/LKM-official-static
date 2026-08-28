@@ -2,10 +2,10 @@
 import OfficialSidebarLayout from "../layouts/OfficialSidebarLayout.astro";
 import MemberCard from "../components/official/MemberCard.astro";
 import DepartmentSection from "../components/official/DepartmentSection.astro";
-import team from "../data/team-members.json";
+import { teamData } from "../data/team-data";
 import type { MemberLists, SubGroupMaps } from "../data/team-types";
 
-// ===== 团队页（复刻主应用 /official/team，数据来自 members.json 静态 import）=====
+// ===== 团队页（复刻主应用 /official/team，数据来自 team-data.ts 静态 import）=====
 
 const sidebarItems = [
   { text: "创始人", href: "#founder", icon: "star" },
@@ -19,8 +19,8 @@ const sidebarItems = [
   { text: "已离开成员", href: "#alumni", icon: "userX" },
 ];
 
-const ml = team.memberLists as MemberLists;
-const sg = team.subGroupMaps as SubGroupMaps;
+const ml: MemberLists = teamData.memberLists;
+const sg: SubGroupMaps = teamData.subGroupMaps;
 ---
 
 <OfficialSidebarLayout

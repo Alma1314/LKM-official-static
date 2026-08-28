@@ -1,23 +1,23 @@
 /**
- * 一次性：同步团队页成员头像到静态站并 ASCII 化命名。
+ * 同步团队页成员头像到静态站并 ASCII 化命名。
  *
- * 读 src/data/team-members.json 收集所有 avatarKey，把对应 webp 从
+ * 读 src/data/team-data.ts 收集所有 avatarKey，把对应 webp 从
  * LKM-service/static/avatars/ 复制到 public/images/avatars/，命名 t01..tNN.webp，
  * 生成 src/data/avatar-map.json { avatarKey: "tNN.webp" }。
  *
- * 用法：node scripts/sync-team-avatars.mjs
+ * 用法：node --experimental-strip-types scripts/sync-team-avatars.mts
  */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { teamData } from "../src/data/team-data.ts";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SRC_AVATARS = path.join(ROOT, "..", "LKM-service", "static", "avatars");
 const DST_DIR = path.join(ROOT, "public", "images", "avatars");
-const DATA_FILE = path.join(ROOT, "src", "data", "team-members.json");
 const MAP_FILE = path.join(ROOT, "src", "data", "avatar-map.json");
 
-const data = JSON.parse(fs.readFileSync(DATA_FILE, "utf8"));
+const data = teamData;
 
 // 收集 avatarKey（memberLists: 数组；subGroupMaps: key→group 对象）
 const keys = new Set();

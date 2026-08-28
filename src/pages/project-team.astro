@@ -2,17 +2,17 @@
 import OfficialSidebarLayout from "../layouts/OfficialSidebarLayout.astro";
 import MemberCard from "../components/official/MemberCard.astro";
 import DepartmentSection from "../components/official/DepartmentSection.astro";
-import team from "../data/team-members.json";
+import { teamData } from "../data/team-data";
 import type { SubGroupMaps, TeamSubGroup } from "../data/team-types";
 
-// ===== 项目团队页（复刻主应用 /official/project-team，数据来自 members.json）=====
+// ===== 项目团队页（复刻主应用 /official/project-team，数据来自 team-data.ts）=====
 
 const sidebarItems = [
   { text: "教材项目组", href: "#textbooks", icon: "books" },
   { text: "科普项目组", href: "#science", icon: "flask" },
 ];
 
-const sg = team.subGroupMaps as SubGroupMaps;
+const sg: SubGroupMaps = teamData.subGroupMaps;
 const pg: Record<string, TeamSubGroup> = sg.projectSubGroups ?? {};
 const groups = Object.entries(pg).map(([key, g]) => ({
   key,

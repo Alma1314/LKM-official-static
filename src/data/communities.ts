@@ -1,5 +1,3 @@
-// QQ 社群数据（静态硬编码，源自主应用 i18n + communities.ts）。
-
 export interface Community {
   name: string;
   qqGroup?: string;

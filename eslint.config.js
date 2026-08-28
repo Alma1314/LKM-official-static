@@ -5,9 +5,7 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import typescriptParser from "@typescript-eslint/parser";
 
-/**
- * 静态站 ESLint 扁平配置（对齐 LKM-official-website 主应用，裁剪掉 Vue/具体文件规则）。
- */
+
 export default [
   js.configs.recommended,
   ...eslintPluginAstro.configs["flat/recommended"],

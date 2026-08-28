@@ -1,4 +1,3 @@
-// 发展历程 · 时间线数据（18 条，取自主应用 i18n zh_CN），首页与关于页共用。
 export interface TimelineItem {
   year: string;
   title: string;

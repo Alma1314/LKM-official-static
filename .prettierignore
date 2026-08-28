@@ -5,5 +5,4 @@ node_modules
 .claude
 pnpm-lock.yaml
 LICENSE.md
-src/data/team-members.json
 src/data/avatar-map.json
