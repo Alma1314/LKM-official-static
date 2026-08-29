@@ -1,0 +1,57 @@
+---
+import OfficialSidebarLayout from "../../layouts/OfficialSidebarLayout.astro";
+import CommunitySection from "../../components/official/CommunitySection.astro";
+import CommunityCard from "../../components/official/CommunityCard.astro";
+import { communityCategories as zhCat, communityNote as zhNote } from "../../data/communities";
+import { communityCategories as enCat, communityNote as enNote } from "../../data/en/communities";
+import { pickByLocale, t } from "../../i18n/index";
+
+const lang = (Astro.currentLocale ?? "zh") as string;
+
+import { getStaticPathsForLang } from "../../i18n/paths";
+export const getStaticPaths = getStaticPathsForLang;
+
+// ===== QQ 社群页（复刻主应用 /official/communities）=====
+
+// 社群分类数据（zh 完整 8 类；en 阶段一为空占位数组，渲染时自然无输出且不报错）
+const communityCategories = pickByLocale(lang, zhCat, enCat);
+const communityNote = pickByLocale(lang, zhNote, enNote);
+
+const sidebarItems = [
+  { text: t(lang, "communities.sidebar_general"), href: "#general", icon: "users" },
+  { text: t(lang, "communities.sidebar_grades"), href: "#grades", icon: "school" },
+  { text: t(lang, "communities.sidebar_groups"), href: "#groups", icon: "category" },
+  { text: t(lang, "communities.sidebar_basic"), href: "#basic", icon: "atom" },
+  { text: t(lang, "communities.sidebar_applied"), href: "#applied", icon: "robot" },
+  { text: t(lang, "communities.sidebar_hobby"), href: "#hobby", icon: "palette" },
+  { text: t(lang, "communities.sidebar_events"), href: "#events", icon: "calendarStar" },
+  { text: t(lang, "communities.sidebar_legacy"), href: "#legacy", icon: "archive" },
+];
+
+const sectionIds = ["general", "grades", "groups", "basic", "applied", "hobby", "events", "legacy"];
+---
+
+<OfficialSidebarLayout
+  title={t(lang, "communities.title")}
+  currentPath="/communities"
+  sidebarItems={sidebarItems}
+>
+  {
+    communityCategories.map((cat, i) => (
+      <CommunitySection id={sectionIds[i]} title={cat.label} intro={cat.intro || undefined}>
+        {cat.groups.map((g) => (
+          <CommunityCard
+            name={g.name}
+            qqGroup={g.qqGroup}
+            desc={g.desc}
+            isQQChannel={g.isQQChannel}
+          />
+        ))}
+      </CommunitySection>
+    ))
+  }
+
+  <div class="max-w-7xl mx-auto mt-4 px-4 md:px-6 pb-8">
+    <p class="text-center text-sm text-text-muted/60 italic">{communityNote}</p>
+  </div>
+</OfficialSidebarLayout>

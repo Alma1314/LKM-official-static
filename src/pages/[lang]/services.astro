@@ -1,13 +1,20 @@
 ---
-import OfficialSidebarLayout from "../layouts/OfficialSidebarLayout.astro";
-import Icon from "../components/community/Icon.astro";
+import OfficialSidebarLayout from "../../layouts/OfficialSidebarLayout.astro";
+import Icon from "../../components/community/Icon.astro";
+import { t } from "../../i18n/index";
+import { langUrl } from "../../i18n/paths";
 
-// ===== 服务页（复刻主应用 /official/services，静态硬编码）=====
+const lang = (Astro.currentLocale ?? "zh") as string;
+
+import { getStaticPathsForLang } from "../../i18n/paths";
+export const getStaticPaths = getStaticPathsForLang;
+
+// ===== 服务页（复刻主应用 /official/services，结构文案 t()，卡片数据阶段二）=====
 
 const sidebarItems = [
-  { text: "内容创作", href: "#content", icon: "pencil" },
-  { text: "社区活动", href: "#events", icon: "confetti" },
-  { text: "知识平台", href: "#platform", icon: "database" },
+  { text: t(lang, "services.sidebar_content"), href: "#content", icon: "pencil" },
+  { text: t(lang, "services.sidebar_events"), href: "#events", icon: "confetti" },
+  { text: t(lang, "services.sidebar_platform"), href: "#platform", icon: "database" },
 ];
 
 // 内容创作 9 卡
@@ -38,24 +45,24 @@ const platformItems = [
 ];
 ---
 
-<OfficialSidebarLayout title="服务" currentPath="/services" sidebarItems={sidebarItems}>
+<OfficialSidebarLayout title={t(lang, "services.title")} currentPath="/services" sidebarItems={sidebarItems}>
   {/* HeroText 首屏 */}
   <section class="relative not-prose">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
       <div class="py-16 md:py-[80px]">
         <div class="text-center max-w-5xl mx-auto">
           <h1 class="text-[40px] md:text-[56px] font-semibold leading-[1.07] tracking-[-0.005em] mb-4 font-heading text-deep-text">
-            让科技回归每一个人
+            {t(lang, "services.hero_title")}
           </h1>
           <div class="max-w-3xl mx-auto">
             <p class="text-[17px] text-text-muted mb-6 leading-relaxed">
-              理科迷提供多种形式让科学与技术传播，以及社区服务，从学术专业讨论到科普内容，我们致力于打破知识壁垒，打破信息差，让更多人感受到科技的魅力，理性的美。
+              {t(lang, "services.hero_paragraph")}
             </p>
           </div>
           <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
             <div class="flex w-full sm:w-auto">
-              <a href="/about" class="btn btn-primary w-full sm:w-auto px-8 pointer-events-auto">
-                加入我们
+              <a href={langUrl(lang, "/about")} class="btn btn-primary w-full sm:w-auto px-8 pointer-events-auto">
+                {t(lang, "services.cta_join")}
                 <Icon name="arrowRight" class="w-5 h-5 inline-block" />
               </a>
             </div>
@@ -70,10 +77,10 @@ const platformItems = [
     <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20 lg:py-24">
       <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
         <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
-          内容创作
+          {t(lang, "services.section_content")}
         </h2>
         <p class="mt-3 text-[17px] text-text-muted">
-          由团队成员和社区成员共创的高质量内容，覆盖多个学科领域。
+          {t(lang, "services.section_content_sub")}
         </p>
       </div>
       <div class="grid mx-auto gap-5 md:gap-6 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -97,10 +104,10 @@ const platformItems = [
     <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20 lg:py-24">
       <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
         <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
-          社区活动
+          {t(lang, "services.section_events")}
         </h2>
         <p class="mt-3 text-[17px] text-text-muted">
-          从线上研讨到假期活动，理科迷为社区成员提供丰富多彩的互动体验。
+          {t(lang, "services.section_events_sub")}
         </p>
       </div>
       <div class="grid mx-auto gap-5 md:gap-6 gap-x-8 sm:grid-cols-2">
@@ -124,10 +131,10 @@ const platformItems = [
     <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20 lg:py-24">
       <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
         <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
-          知识平台
+          {t(lang, "services.section_platform")}
         </h2>
         <p class="mt-3 text-[17px] text-text-muted">
-          理科迷正在建设面向社区成员的知识管理平台，助力学习与协作。
+          {t(lang, "services.section_platform_sub")}
         </p>
       </div>
       <div class="grid mx-auto gap-5 md:gap-6 gap-x-8 sm:grid-cols-2">
@@ -152,16 +159,16 @@ const platformItems = [
       <div class="max-w-3xl mx-auto text-center p-8 rounded-[12px] bg-page-bg border border-surface-3 card-hover">
         <div class="mb-0">
           <h2 class="text-[40px] font-semibold tracking-[-0.005em] mb-3 font-heading">
-            对<span class="text-[#6C2AD8]">理科迷</span>感兴趣？
+            {t(lang, "services.cta_question_pre")}<span class="text-[#6C2AD8]">{t(lang, "services.cta_question_accent")}</span>{t(lang, "services.cta_question_post")}
           </h2>
           <p class="text-[17px] text-text-muted">
-            无论你是想加入社区、投稿创作作品，还是提出合作建议，我们都非常欢迎。
+            {t(lang, "services.cta_body")}
           </p>
         </div>
         <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6">
           <div class="flex w-full sm:w-auto">
-            <a href="/about" class="btn btn-primary w-full sm:mb-0 pointer-events-auto">
-              联系我们
+            <a href={langUrl(lang, "/about")} class="btn btn-primary w-full sm:mb-0 pointer-events-auto">
+              {t(lang, "services.cta_contact")}
               <Icon name="arrowRight" class="w-5 h-5 inline-block" />
             </a>
           </div>

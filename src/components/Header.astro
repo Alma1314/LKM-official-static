@@ -1,31 +1,40 @@
 ---
-import { SITE_NAME } from "~/data/config";
-const nav = [
-  { href: "/", label: "首页" },
-  { href: "/about", label: "关于" },
-  { href: "/services", label: "服务" },
+import { SITE_NAME } from "~/data/config"; // 品牌名不翻译，保持中文
+import { t } from "../i18n/index";
+import type { TranslationKey } from "../i18n/index";
+import { langUrl } from "../i18n/paths";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+const lang = (Astro.currentLocale ?? "zh") as string;
+const nav: { href: string; labelKey: TranslationKey }[] = [
+  { href: "/", labelKey: "common.nav_home" },
+  { href: "/about", labelKey: "common.nav_about" },
+  { href: "/services", labelKey: "common.nav_services" },
 ];
 ---
 
 <header class="sticky top-0 z-40 border-b border-[#e0e0e0] bg-white/90 backdrop-blur">
   <nav class="w-full max-w-[var(--page-width)] mx-auto px-6 flex items-center justify-between h-14">
-    <a href="/" class="font-heading font-bold text-[1.05rem]">{SITE_NAME}</a>
-    <ul class="flex items-center gap-6">
-      {nav.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            class:list={[
-              "text-sm transition-colors",
-              Astro.url.pathname === item.href
-                ? "text-[var(--primary)]"
-                : "text-[#1d1d1f] hover:text-[var(--primary)]",
-            ]}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <a href={langUrl(lang, "/")} class="font-heading font-bold text-[1.05rem]">{SITE_NAME}</a>
+    <div class="flex items-center gap-6">
+      <ul class="flex items-center gap-6">
+        {nav.map((item) => (
+          <li>
+            <a
+              href={langUrl(lang, item.href)}
+              class:list={[
+                "text-sm transition-colors",
+                Astro.url.pathname === item.href
+                  ? "text-[var(--primary)]"
+                  : "text-[#1d1d1f] hover:text-[var(--primary)]",
+              ]}
+            >
+              {t(lang, item.labelKey)}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <LanguageSwitcher />
+    </div>
   </nav>
 </header>

@@ -1,11 +1,14 @@
 ---
-import { SITE_NAME } from "~/data/config";
+import { SITE_NAME } from "~/data/config"; // 品牌名不翻译，保持中文
+import { t } from "../i18n/index";
+
+const lang = (Astro.currentLocale ?? "zh") as string;
 ---
 
 <footer class="border-t border-[#e0e0e0] py-8">
   <div class="w-full max-w-[var(--page-width)] mx-auto px-6 text-center text-sm text-[#7a7a7a]">
     <p>
-      © {new Date().getFullYear()} {SITE_NAME} · 让科学回归每一个人
+      © {new Date().getFullYear()} {SITE_NAME} · {t(lang, "common.footer.tagline")}
     </p>
   </div>
 </footer>

@@ -1,7 +1,14 @@
 ---
-import OfficialLayout from "../layouts/OfficialLayout.astro";
+import OfficialLayout from "../../layouts/OfficialLayout.astro";
+import { t } from "../../i18n/index";
+import { langUrl } from "../../i18n/paths";
 
-// ===== 项目大厅索引页（复刻主应用 /official/projects，硬编码示例项目）=====
+const lang = (Astro.currentLocale ?? "zh") as string;
+
+import { getStaticPathsForLang } from "../../i18n/paths";
+export const getStaticPaths = getStaticPathsForLang;
+
+// ===== 项目大厅索引页（复刻主应用 /official/projects，硬编码示例项目 + t() 结构标签）=====
 
 const projects = [
   {
@@ -43,17 +50,17 @@ const projects = [
 ];
 ---
 
-<OfficialLayout title="项目大厅" currentPath="/projects">
+<OfficialLayout title={t(lang, "projects.title")} currentPath="/projects">
   <div class="relative not-prose scroll-mt-[72px]">
     <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-16">
       <div class="space-y-6">
-        <h1 class="text-3xl font-bold text-deep-text">项目大厅</h1>
+        <h1 class="text-3xl font-bold text-deep-text">{t(lang, "projects.title")}</h1>
 
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {
             projects.map((p) => (
               <a
-                href="/communities"
+                href={langUrl(lang, "/communities")}
                 class="profile-card group block"
               >
                 <div class="profile-inner p-5 flex flex-col gap-3">
@@ -63,12 +70,12 @@ const projects = [
                     </h2>
                     {p.pinned && (
                       <span class="text-[10px] px-2 py-0.5 rounded-full bg-primary/15 text-primary font-medium">
-                        置顶
+                        {t(lang, "projects.pinned")}
                       </span>
                     )}
                     {p.incubated && (
                       <span class="text-[10px] px-2 py-0.5 rounded-full bg-warning/15 text-warning font-medium">
-                        七月孵化
+                        {t(lang, "projects.incubated")}
                       </span>
                     )}
                   </div>
@@ -89,7 +96,7 @@ const projects = [
 
                   <div>
                     <div class="flex items-center justify-between text-xs text-text-muted mb-1">
-                      <span>进度</span>
+                      <span>{t(lang, "projects.progress")}</span>
                       <span>{p.progress}%</span>
                     </div>
                     <div class="h-1.5 rounded-full bg-surface-3 overflow-hidden">
@@ -104,7 +111,7 @@ const projects = [
                     <div class="flex items-center gap-1.5 flex-wrap">
                       {p.roles.map((r) => (
                         <span class="text-[11px] px-2 py-0.5 rounded-full bg-page-bg border border-surface-3 text-text-muted">
-                          缺{r}
+                          {t(lang, "projects.role_missing")}{r}
                         </span>
                       ))}
                     </div>

@@ -1,10 +1,20 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
+import { t } from "../i18n/index";
+import { langUrl } from "../i18n/paths";
+
+// 404 不是 [lang] 路由，Astro.currentLocale 不可用，需从请求 URL 推导语言。
+// /en/* 的 404 显示英文，其余路径(含 /zh/ 、根 /)的 404 显示中文。
+const lang = Astro.url.pathname.startsWith("/en") ? "en" : "zh";
+const title = t(lang, "notfound.title");
+const message = t(lang, "notfound.message");
+const back = t(lang, "notfound.back");
+const backHref = langUrl(lang, "/");
 ---
-<BaseLayout title="页面未找到">
+<BaseLayout title={title}>
   <section class="py-24 text-center">
     <h1 class="font-heading text-2xl font-bold mb-4">404</h1>
-    <p class="text-[#7a7a7a]">你访问的页面不存在。</p>
-    <a href="/" class="mt-4 inline-block text-[var(--primary)]">返回首页</a>
+    <p class="text-[#7a7a7a]">{message}</p>
+    <a href={backHref} class="mt-4 inline-block text-[var(--primary)]">{back}</a>
   </section>
 </BaseLayout>

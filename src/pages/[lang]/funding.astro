@@ -1,10 +1,16 @@
 ---
-import OfficialLayout from "../layouts/OfficialLayout.astro";
+import OfficialLayout from "../../layouts/OfficialLayout.astro";
+import { t } from "../../i18n/index";
 
-// ===== 资助系统页（复刻主应用 /official/funding，静态硬编码）=====
+const lang = (Astro.currentLocale ?? "zh") as string;
+
+import { getStaticPathsForLang } from "../../i18n/paths";
+export const getStaticPaths = getStaticPathsForLang;
+
+// ===== 资助系统页（复刻主应用 /official/funding，纯结构文案 t()）=====
 ---
 
-<OfficialLayout title="资助系统 —— 理科迷" currentPath="/funding">
+<OfficialLayout title={t(lang, "funding.title")} currentPath="/funding">
   <div class="max-w-2xl mx-auto text-center py-12">
     {/* 插画区 */}
     <div class="mb-8">
@@ -26,33 +32,33 @@ import OfficialLayout from "../layouts/OfficialLayout.astro";
       </div>
     </div>
 
-    <h1 class="text-3xl font-bold text-deep-text mb-3">系统筹备中</h1>
+    <h1 class="text-3xl font-bold text-deep-text mb-3">{t(lang, "funding.heading")}</h1>
 
     <p class="text-text-muted mb-8 max-w-md mx-auto leading-relaxed">
-      理科迷致力于收支平衡后的可持续发展。<br />
-      平台运行至今，由管理团队自费支撑服务器、域名等运营成本。<br />
-      我们计划在平台稳定运营后启动正式资助系统。
+      {t(lang, "funding.para_1")}<br />
+      {t(lang, "funding.para_2")}<br />
+      {t(lang, "funding.para_3")}
     </p>
 
     <div class="bg-card-bg border border-surface-3 rounded-xl p-6 mb-8 max-w-md mx-auto text-left text-sm">
-      <h3 class="font-semibold text-deep-text mb-2">关于运营成本</h3>
+      <h3 class="font-semibold text-deep-text mb-2">{t(lang, "funding.costs_title")}</h3>
       <ul class="space-y-2 text-text-muted">
         <li class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0"></span>服务器与域名费用
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0"></span>{t(lang, "funding.cost_server")}
         </li>
         <li class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0"></span>文件存储与 CDN 带宽
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0"></span>{t(lang, "funding.cost_storage")}
         </li>
         <li class="flex items-center gap-2">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0"></span>短信与邮件服务
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/50 shrink-0"></span>{t(lang, "funding.cost_sms")}
         </li>
       </ul>
     </div>
 
     <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 max-w-md mx-auto text-sm">
       <p class="text-amber-800 leading-relaxed">
-        <strong>感谢每一位支持理科迷的你</strong><br />
-        我们承诺所有资金使用公开透明，定期发布财务报告。如有赞助意向，欢迎联系我们。
+        <strong>{t(lang, "funding.thanks")}</strong><br />
+        {t(lang, "funding.thanks_note")}
       </p>
     </div>
 
@@ -60,7 +66,7 @@ import OfficialLayout from "../layouts/OfficialLayout.astro";
       class="mt-8 btn-primary px-8 py-3 rounded-xl text-base font-semibold opacity-50 cursor-not-allowed"
       disabled
     >
-      暂未开放
+      {t(lang, "funding.button")}
     </button>
   </div>
 </OfficialLayout>

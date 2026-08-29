@@ -3,6 +3,7 @@ import "../styles/main.css";
 import OfficialLayout from "./OfficialLayout.astro";
 import Icon from "../components/community/Icon.astro";
 import styles from "../components/community/CommunitySidebar.module.css";
+import { t } from "../i18n/index";
 
 /**
  * 官网侧栏布局（服务页用）：官方壳顶栏/页脚 + 左侧 #锚点侧栏 + 主内容偏移。
@@ -21,9 +22,10 @@ interface Props {
   sidebarItems?: SidebarItem[];
 }
 
+const lang = (Astro.currentLocale ?? "zh") as string;
 const {
   title,
-  description = "理科迷 (LKM) 独立官网",
+  description = t(lang, "common.site.description"),
   currentPath = "/services",
   sidebarItems = [],
 } = Astro.props;
@@ -31,7 +33,7 @@ const {
 
 <OfficialLayout title={title} description={description} currentPath={currentPath}>
   <div class="min-h-screen">
-    <nav class={styles.shell} data-page-sidebar aria-label="页面目录">
+    <nav class={styles.shell} data-page-sidebar aria-label={t(lang, "common.aria.page_toc")}>
       <ul class={styles.nav}>
         {
           sidebarItems.map((item) => (

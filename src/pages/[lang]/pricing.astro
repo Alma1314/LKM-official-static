@@ -1,8 +1,15 @@
 ---
-import OfficialLayout from "../layouts/OfficialLayout.astro";
-import Icon from "../components/community/Icon.astro";
+import OfficialLayout from "../../layouts/OfficialLayout.astro";
+import Icon from "../../components/community/Icon.astro";
+import { t } from "../../i18n/index";
+import { langUrl } from "../../i18n/paths";
 
-// ===== 赞助与支持页（复刻主应用 /official/pricing，静态硬编码）=====
+const lang = (Astro.currentLocale ?? "zh") as string;
+
+import { getStaticPathsForLang } from "../../i18n/paths";
+export const getStaticPaths = getStaticPathsForLang;
+
+// ===== 赞助与支持页（复刻主应用 /official/pricing，结构文案 t()，卡片数据阶段二）=====
 
 const supportItems = [
   { icon: "usersPlus", title: "加入社区", desc: "最直接的方式就是加入理科迷官方 QQ 群组，关注官方账号、参与讨论、分享知识、上传文件。每一位活跃的成员都是社区最宝贵的财富。" },
@@ -27,18 +34,18 @@ const faqItems = [
 ];
 ---
 
-<OfficialLayout title="赞助与支持" currentPath="/pricing">
+<OfficialLayout title={t(lang, "pricing.title")} currentPath="/pricing">
   {/* HeroText */}
   <section class="relative not-prose">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
       <div class="py-16 md:py-[80px]">
         <div class="text-center max-w-5xl mx-auto">
           <h1 class="text-[40px] md:text-[56px] font-semibold leading-[1.07] tracking-[-0.005em] mb-4 font-heading text-deep-text">
-            让科技传播走得更远
+            {t(lang, "pricing.hero_title")}
           </h1>
           <div class="max-w-3xl mx-auto">
             <p class="text-[17px] text-text-muted mb-6 leading-relaxed">
-              理科迷是一个非营利的科技爱好者社区。每一位成员的支持，都是我们持续前行的动力。
+              {t(lang, "pricing.hero_paragraph")}
             </p>
           </div>
         </div>
@@ -51,10 +58,10 @@ const faqItems = [
     <div class="relative mx-auto max-w-4xl px-4 md:px-6 py-16 md:py-20">
       <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
         <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
-          支持方式
+          {t(lang, "pricing.section_support")}
         </h2>
         <p class="mt-3 text-[17px] text-text-muted">
-          你的每一份力量，都能帮助理科迷变得更好。以下是你参与社区建设的几种方式。
+          {t(lang, "pricing.section_support_sub")}
         </p>
       </div>
       <div class="grid mx-auto gap-5 md:gap-6 gap-x-8 sm:grid-cols-2">
@@ -76,10 +83,10 @@ const faqItems = [
     <div class="relative mx-auto max-w-4xl px-4 md:px-6 py-16 md:py-20">
       <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
         <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
-          常见问题
+          {t(lang, "pricing.section_faq")}
         </h2>
         <p class="mt-3 text-[17px] text-text-muted">
-          关于支持方式的一些常见疑问，也许能解答你的困惑。
+          {t(lang, "pricing.section_faq_sub")}
         </p>
       </div>
       <div class="grid mx-auto gap-5 md:gap-6 gap-x-8 sm:grid-cols-2">
@@ -102,16 +109,16 @@ const faqItems = [
       <div class="max-w-3xl mx-auto text-center p-8 rounded-[12px] bg-page-bg border border-surface-3 card-hover">
         <div class="mb-0">
           <h2 class="text-[40px] font-semibold tracking-[-0.005em] mb-3 font-heading">
-            准备好为理科迷贡献一份力量了？
+            {t(lang, "pricing.cta_title")}
           </h2>
           <p class="text-[17px] text-text-muted">
-            加入我们的社区，与志同道合的伙伴一起，让科技传播走得更远。
+            {t(lang, "pricing.cta_body")}
           </p>
         </div>
         <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6">
           <div class="flex w-full sm:w-auto">
-            <a href="/contact" class="btn btn-primary w-full sm:mb-0 pointer-events-auto">
-              联系我们
+            <a href={langUrl(lang, "/contact")} class="btn btn-primary w-full sm:mb-0 pointer-events-auto">
+              {t(lang, "pricing.cta_contact")}
               <Icon name="arrowRight" class="w-5 h-5 inline-block" />
             </a>
           </div>

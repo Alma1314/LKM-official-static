@@ -1,0 +1,43 @@
+---
+import { SUPPORTED_LANGS } from "../i18n/index";
+import type { Lang } from "../i18n/index";
+
+// 当前语言：Astro.currentLocale（在 [lang] 路由下由内置 i18n 提供）
+const current = (Astro.currentLocale ?? "zh") as Lang;
+const label: Record<Lang, string> = { zh: "中", en: "EN" };
+
+/**
+ * 目标语言同页 URL。
+ *
+ * 页面尚未迁移到 [lang]（Task 6 未做）时，Astro.currentLocale 为 undefined，
+ * Astro.getLocaleAbsoluteUrl 可能抛错或产生异常前缀。此处保守降级：
+ * 手动剥掉 pathname 上已有语言前缀，再拼上目标语言前缀，保证切换器在该阶段
+ * 不抛错、可正常渲染（链接指向的 /en/... 页面待 Task 6 迁移后生效）。
+ */
+function localizedHref(target: Lang): string {
+  const pathname = Astro.url.pathname;
+  const base = pathname.replace(/^\/(zh|en)(?=\/|$)/, "") || "/";
+  if (target === "zh") {
+    return base === "/" ? "/" : "/zh" + base;
+  }
+  const withLang = "/en" + (base === "/" ? "/" : base);
+  return withLang === "/en/" ? "/en/" : withLang;
+}
+---
+<div class="flex items-center gap-1 text-sm" aria-label="语言切换">
+  {
+    SUPPORTED_LANGS.map((lang) => (
+      <a
+        href={localizedHref(lang)}
+        class:list={[
+          "px-2 py-1 rounded-md font-semibold transition-colors",
+          lang === current
+            ? "text-[var(--primary)]"
+            : "text-neutral-500 hover:text-[var(--primary)]",
+        ]}
+      >
+        {label[lang]}
+      </a>
+    ))
+  }
+</div>

@@ -1,27 +1,34 @@
 ---
-import OfficialLayout from "../layouts/OfficialLayout.astro";
-import Icon from "../components/community/Icon.astro";
+import OfficialLayout from "../../layouts/OfficialLayout.astro";
+import Icon from "../../components/community/Icon.astro";
+import { t } from "../../i18n/index";
+import { langUrl } from "../../i18n/paths";
+
+const lang = (Astro.currentLocale ?? "zh") as string;
+
+import { getStaticPathsForLang } from "../../i18n/paths";
+export const getStaticPaths = getStaticPathsForLang;
 
 // ===== 联系我们页（复刻主应用 /official/contact，静态展示）=====
 
 const contactItems = [
-  { icon: "usersGroup", title: "加入社区", desc: "理科迷拥有完善的QQ社群体系，涵盖年级分群、学科分群、兴趣社团等数十个群组。", href: "/communities", action: "查看全部社群" },
+  { icon: "usersGroup", title: "加入社区", desc: "理科迷拥有完善的QQ社群体系，涵盖年级分群、学科分群、兴趣社团等数十个群组。", href: langUrl(lang, "/communities"), action: "查看全部社群" },
   { icon: "heartHandshake", title: "合作建议", desc: "如果你有科普内容合作、活动联办、技术支持等方面的合作意向，欢迎通过留言表单联系我们。" },
   { icon: "bug", title: "问题反馈", desc: "网站或社区的 Bug 反馈与功能建议，都可以通过留言表单提交，我们会认真处理每一条反馈。" },
   { icon: "mail", title: "邮箱", desc: "almafox123@outlook.com", href: "mailto:almafox123@outlook.com" },
   { icon: "github", title: "GitHub", desc: "github.com/LKM-AHZ", href: "https://github.com/LKM-AHZ", external: true },
-  { icon: "brandBilibili", title: "B站", desc: "关注官方B站账号获取最新科普视频", href: "/", external: true },
+  { icon: "brandBilibili", title: "B站", desc: "关注官方B站账号获取最新科普视频", href: langUrl(lang, "/"), external: true },
 ];
 ---
 
-<OfficialLayout title="联系我们" currentPath="/contact">
+<OfficialLayout title={t(lang, "contact.title")} currentPath="/contact">
   {/* HeroText */}
   <section class="relative not-prose">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
       <div class="py-16 md:py-[80px]">
         <div class="text-center max-w-5xl mx-auto">
           <h1 class="text-[40px] md:text-[56px] font-semibold leading-[1.07] tracking-[-0.005em] mb-4 font-heading text-deep-text">
-            期待听到你的声音！
+            {t(lang, "contact.hero_title")}
           </h1>
         </div>
       </div>
@@ -33,33 +40,33 @@ const contactItems = [
     <div class="relative mx-auto max-w-7xl px-4 md:px-6 pb-16">
       <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
         <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
-          给我们留言
+          {t(lang, "contact.section_message")}
         </h2>
         <p class="mt-3 text-[17px] text-text-muted">
-          如果你想加入理科迷、提出建议或合作意向，欢迎通过下方表单联系我们。也可以先看看常见问题，也许已经有了你想要的答案。
+          {t(lang, "contact.section_message_sub")}
         </p>
       </div>
 
       <form id="contact-form" method="POST" action="#" class="flex flex-col max-w-xl mx-auto rounded-[12px] bg-page-bg border border-surface-3 p-4 sm:p-6 lg:p-8 w-full">
         <div class="mb-4">
-          <label for="contact-name" class="block mb-2 text-sm font-medium text-deep-text">你的名字</label>
+          <label for="contact-name" class="block mb-2 text-sm font-medium text-deep-text">{t(lang, "contact.label_name")}</label>
           <input id="contact-name" name="name" type="text" class="w-full rounded-[var(--radius-field)] border border-surface-3 bg-base-100 px-4 py-2.5 text-sm text-base-content outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition" />
         </div>
         <div class="mb-4">
-          <label for="contact-email" class="block mb-2 text-sm font-medium text-deep-text">电子邮箱</label>
+          <label for="contact-email" class="block mb-2 text-sm font-medium text-deep-text">{t(lang, "contact.label_email")}</label>
           <input id="contact-email" name="email" type="email" class="w-full rounded-[var(--radius-field)] border border-surface-3 bg-base-100 px-4 py-2.5 text-sm text-base-content outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition" />
         </div>
         <div class="mb-4">
-          <label for="contact-message" class="block mb-2 text-sm font-medium text-deep-text">留言内容</label>
+          <label for="contact-message" class="block mb-2 text-sm font-medium text-deep-text">{t(lang, "contact.label_message")}</label>
           <textarea id="contact-message" name="message" rows="5" class="w-full rounded-[var(--radius-field)] border border-surface-3 bg-base-100 px-4 py-2.5 text-sm text-base-content outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition"></textarea>
         </div>
         <label class="mb-4 flex items-start gap-2 text-xs text-text-muted cursor-pointer">
           <input type="checkbox" name="agreed" class="mt-0.5 accent-[var(--primary)]" />
-          <span>提交此表单即表示你同意我们收集你的个人信息用于联系回复。</span>
+          <span>{t(lang, "contact.consent_text")}</span>
         </label>
-        <button type="submit" class="btn btn-primary pointer-events-auto">发送留言</button>
+        <button type="submit" class="btn btn-primary pointer-events-auto">{t(lang, "contact.submit")}</button>
         <p id="form-message" class="mt-3 text-sm text-text-muted text-center"></p>
-        <p class="mt-2 text-xs text-text-muted text-center leading-relaxed">我们通常会在 24 小时内回复你的留言。</p>
+        <p class="mt-2 text-xs text-text-muted text-center leading-relaxed">{t(lang, "contact.reply_note")}</p>
       </form>
     </div>
   </section>
@@ -69,7 +76,7 @@ const contactItems = [
     <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-16">
       <div class="mb-8 md:mx-auto md:mb-12 text-center max-w-3xl">
         <h2 class="font-semibold leading-tight font-heading text-3xl md:text-[40px] font-semibold tracking-[-0.005em]">
-          联系我们
+          {t(lang, "contact.section_contact")}
         </h2>
       </div>
 

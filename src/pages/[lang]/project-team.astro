@@ -1,18 +1,26 @@
 ---
-import OfficialSidebarLayout from "../layouts/OfficialSidebarLayout.astro";
-import MemberCard from "../components/official/MemberCard.astro";
-import DepartmentSection from "../components/official/DepartmentSection.astro";
-import { teamData } from "../data/team-data";
-import type { SubGroupMaps, TeamSubGroup } from "../data/team-types";
+import OfficialSidebarLayout from "../../layouts/OfficialSidebarLayout.astro";
+import MemberCard from "../../components/official/MemberCard.astro";
+import DepartmentSection from "../../components/official/DepartmentSection.astro";
+import { teamData as zhTeam } from "../../data/team-data";
+import { teamData as enTeam } from "../../data/en/team-data";
+import { pickByLocale, t } from "../../i18n/index";
+import type { SubGroupMaps, TeamData, TeamSubGroup } from "../../data/team-types";
+
+const lang = (Astro.currentLocale ?? "zh") as string;
+
+import { getStaticPathsForLang } from "../../i18n/paths";
+export const getStaticPaths = getStaticPathsForLang;
 
 // ===== 项目团队页（复刻主应用 /official/project-team，数据来自 team-data.ts）=====
+const team = pickByLocale<TeamData>(lang, zhTeam, enTeam);
 
 const sidebarItems = [
-  { text: "教材项目组", href: "#textbooks", icon: "books" },
-  { text: "科普项目组", href: "#science", icon: "flask" },
+  { text: t(lang, "team.sidebar_textbooks"), href: "#textbooks", icon: "books" },
+  { text: t(lang, "team.sidebar_science"), href: "#science", icon: "flask" },
 ];
 
-const sg: SubGroupMaps = teamData.subGroupMaps;
+const sg: SubGroupMaps = team.subGroupMaps;
 const pg: Record<string, TeamSubGroup> = sg.projectSubGroups ?? {};
 const groups = Object.entries(pg).map(([key, g]) => ({
   key,
@@ -28,7 +36,7 @@ const borderColor: Record<string, string> = {
 ---
 
 <OfficialSidebarLayout
-  title="项目团队 —— 理科迷"
+  title={t(lang, "team.project_title")}
   currentPath="/project-team"
   sidebarItems={sidebarItems}
 >
@@ -53,7 +61,7 @@ const borderColor: Record<string, string> = {
           ))
         ) : (
           <p class="col-span-full text-center text-sm text-text-muted/50 py-6">
-            暂无成员，期待你的加入
+            {t(lang, "team.project_empty")}
           </p>
         )}
       </DepartmentSection>
