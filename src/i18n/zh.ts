@@ -5,6 +5,7 @@ export const zh = {
   "common.nav_about": "关于",
   "common.nav_services": "服务",
   "common.nav_team": "团队",
+  "common.nav_articles": "文章",
   "common.nav_communities": "社群",
   "common.footer.copyright": "理科迷 LKM © 2026 · 保留所有权利。",
   "common.footer.tagline": "让科学回归每一个人",

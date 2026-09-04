@@ -8,8 +8,8 @@ import LanguageSwitcher from "./LanguageSwitcher.astro";
 const lang = (Astro.currentLocale ?? "zh") as string;
 const nav: { href: string; labelKey: TranslationKey }[] = [
   { href: "/", labelKey: "common.nav_home" },
+  { href: "/news", labelKey: "common.nav_articles" },
   { href: "/about", labelKey: "common.nav_about" },
-  { href: "/services", labelKey: "common.nav_services" },
 ];
 ---
 

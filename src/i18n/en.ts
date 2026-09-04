@@ -7,6 +7,7 @@ export const en = {
   "common.nav_about": "About",
   "common.nav_services": "Services",
   "common.nav_team": "Team",
+  "common.nav_articles": "News",
   "common.nav_communities": "Community",
   "common.footer.copyright": "LiKeLi LKM © 2026 · All rights reserved.",
   "common.footer.tagline": "Bringing science back to everyone",
