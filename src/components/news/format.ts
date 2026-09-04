@@ -27,3 +27,21 @@ export function readingMinutes(markdown: string): number {
   const words = (markdown.match(/[A-Za-z]+(?:['’-][A-Za-z]+)*/g) ?? []).length || 0;
   return Math.max(1, Math.round(chars / 350 + words / 220));
 }
+
+/** 由标题得到稳定色相（无封面图时的确定性配色）。 */
+function hueFromTitle(title: string): number {
+  let h = 0;
+  for (let i = 0; i < title.length; i++) {
+    h = (h * 31 + title.charCodeAt(i)) >>> 0;
+  }
+  return h % 360;
+}
+
+/**
+ * 无真实封面时的渐变“占位封面色块”：主 + 补色两档 HSL。
+ * 同一标题永远同色（列表刷新稳定），不同文章互相错开。
+ */
+export function coverGradient(title: string): string {
+  const base = hueFromTitle(title);
+  return `linear-gradient(135deg, hsl(${base} 74% 55%), hsl(${(base + 48) % 360} 68% 47%))`;
+}

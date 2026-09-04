@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "~/layouts/BaseLayout.astro";
+import OfficialLayout from "../layouts/OfficialLayout.astro";
 import { t } from "../i18n/index";
 import { langUrl } from "../i18n/paths";
 
@@ -11,10 +11,10 @@ const message = t(lang, "notfound.message");
 const back = t(lang, "notfound.back");
 const backHref = langUrl(lang, "/");
 ---
-<BaseLayout title={title}>
+<OfficialLayout title={title} currentPath="/404">
   <section class="py-24 text-center">
     <h1 class="font-heading text-2xl font-bold mb-4">404</h1>
     <p class="text-[#7a7a7a]">{message}</p>
     <a href={backHref} class="mt-4 inline-block text-[var(--primary)]">{back}</a>
   </section>
-</BaseLayout>
+</OfficialLayout>

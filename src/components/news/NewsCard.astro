@@ -1,52 +1,50 @@
 ---
-import { formatDate } from "./format";
+import { coverGradient, formatDate } from "./format";
 
 /**
- * 文章卡片（AstroWind 视觉：干净白卡、pill、日期行、hover 上浮）。
- * 全卡皆为链接，适配 grid cell 等高分自动拉伸。
+ * 文章卡片（AstroWind 观感）：顶部渐变色块“封面” + 摘要 + 底部元信息。
+ * 全卡为链接，适配等分布局取整体高度。
  */
 interface Props {
   lang: "zh" | "en";
   href: string;
   title: string;
   desc?: string;
-  /** publishDate | Date */
   date: Date;
-  /** 预计阅读分钟 */
   minutes: number;
-  /** 显示在图章/标签处的短词（可空） */
   tagLabel?: string;
 }
 
 const { lang, href, title, desc, date, minutes, tagLabel } = Astro.props;
 const dateLabel = formatDate(date, lang);
-const minutesLabel =
-  lang === "en" ? `${minutes} min read` : `${minutes} 分钟`;
+const minutesLabel = lang === "en" ? `${minutes} min read` : `${minutes} 分钟`;
+const gradient = coverGradient(title);
 ---
 
 <a
   href={href}
-  class="group flex h-full flex-col rounded-xl border border-surface-3 bg-card-bg p-6 transition-all duration-200 hover:-translate-y-1 hover:border-primary/60 hover:shadow-lg"
+  class="group flex h-full flex-col overflow-hidden rounded-xl border border-surface-3 bg-card-bg transition-all duration-200 hover:-translate-y-1 hover:border-primary/60 hover:shadow-lg"
 >
-  <div class="mb-2 flex items-center gap-2 text-xs">
+  {/* 封面渐变占位 */}
+  <div class="relative h-24 w-full shrink-0 md:h-28" aria-hidden="true" style={{ background: gradient }}>
     {tagLabel && (
-      <span class="rounded-full border border-primary/30 bg-primary/5 px-2 py-0.5 font-medium text-primary">
+      <span class="absolute bottom-3 left-4 rounded-full bg-black/30 px-2.5 py-0.5 text-[11px] font-medium text-white backdrop-blur-sm">
         {tagLabel}
       </span>
     )}
   </div>
 
-  <h3 class="text-lg font-bold leading-snug text-deep-text transition-colors group-hover:text-primary">
-    {title}
-  </h3>
+  <div class="flex flex-1 flex-col p-6 pt-5">
+    <h3 class="text-lg font-bold leading-snug text-deep-text transition-colors group-hover:text-primary">
+      {title}
+    </h3>
 
-  {desc && (
-    <p class="mt-2 text-sm leading-relaxed text-text-muted line-clamp-3">{desc}</p>
-  )}
+    {desc && <p class="mt-2 text-sm leading-relaxed text-text-muted line-clamp-3">{desc}</p>}
 
-  <div class="mt-auto flex items-center gap-3 pt-5 text-xs text-text-muted">
-    <time datetime={date.toISOString().slice(0, 10)}>{dateLabel}</time>
-    <span class="h-1 w-1 rounded-full bg-surface-3" />
-    <span>{minutesLabel}</span>
+    <div class="mt-auto flex items-center gap-3 pt-5 text-xs text-text-muted">
+      <time datetime={date.toISOString().slice(0, 10)}>{dateLabel}</time>
+      <span class="h-1 w-1 rounded-full bg-surface-3" />
+      <span>{minutesLabel}</span>
+    </div>
   </div>
 </a>
