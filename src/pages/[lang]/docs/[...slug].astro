@@ -2,10 +2,12 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { SUPPORTED_LANGS } from "../../../i18n/index";
+import { langUrl } from "../../../i18n/paths";
+import { formatDate, readingMinutes } from "../../../components/news/format";
 
 // docs 按语言存放于 src/content/docs/<lang>/<slug>.md。
-// 语言与其后的 slug 由 entry.id（相对 base 路径，如 zh/intro、en/intro）按 "/" 切分推导，
-// 而非硬编码，保证目录结构变化时不需改动此页。
+// 语言与其后的 slug 由 entry.id 按 "/" 切分推导，非硬编码，
+// 保证目录结构变化时不需改动此页。
 export async function getStaticPaths() {
   const docs = await getCollection("docs");
   const paths = [];
@@ -14,7 +16,7 @@ export async function getStaticPaths() {
     if (SUPPORTED_LANGS.includes(lang as (typeof SUPPORTED_LANGS)[number])) {
       paths.push({
         params: { lang, slug },
-        props: { doc, lang, slug },
+        props: { doc, lang: lang as "zh" | "en", slug },
       });
     }
   }
@@ -22,16 +24,56 @@ export async function getStaticPaths() {
 }
 
 const { doc, lang } = Astro.props;
+const isEn = lang === "en";
 const { Content } = await render(doc);
-const dateLabel = doc.data.publishDate.toLocaleDateString(
-  lang === "en" ? "en-US" : "zh-CN",
-);
+const ymd = doc.data.publishDate.toISOString().slice(0, 10);
+const minutes = readingMinutes(doc.body ?? "");
+const isNews = doc.data.category === "news";
+// 返回去向：news 回文章列表，其余回站内 / 首页
+const backHref = isNews ? langUrl(lang, "/news") : langUrl(lang, "/");
+const backLabel = isNews ? (isEn ? "← Back to posts" : "← 返回文章") : (isEn ? "← Home" : "← 返回首页");
+const pillLabel =
+  !isNews
+    ? (doc.data.tags?.[0] ?? undefined)
+    : isEn ? "News" : "新闻";
+const dateText = formatDate(doc.data.publishDate, lang);
+const metaMinutes = isEn ? `${minutes} min read` : `${minutes} 分钟阅读`;
 ---
+
 <BaseLayout title={doc.data.title} description={doc.data.description}>
-  <article class="py-12 max-w-2xl">
-    <h1 class="font-heading text-3xl font-bold mb-2">{doc.data.title}</h1>
-    <p class="text-sm text-[#7a7a7a] mb-6">{dateLabel}</p>
-    <div class="prose prose-neutral max-w-none">
+  <article class="mx-auto max-w-3xl px-4 py-12 md:py-16">
+    <a
+      href={backHref}
+      class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+    >
+      {backLabel}
+    </a>
+
+    <header class="mt-6 mb-8">
+      {pillLabel && (
+        <div class="mb-3 flex justify-center">
+          <span class="rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+            {pillLabel}
+          </span>
+        </div>
+      )}
+      <h1 class="text-center font-heading text-3xl md:text-4xl font-bold leading-tight tracking-[-0.01em] text-deep-text">
+        {doc.data.title}
+      </h1>
+      <div class="mt-4 flex items-center justify-center gap-2 text-sm text-text-muted">
+        <time datetime={ymd}>{dateText}</time>
+        <span class="h-1 w-1 rounded-full bg-surface-3" />
+        <span>{metaMinutes}</span>
+      </div>
+
+      {doc.data.description && (
+        <p class="mt-6 text-center text-[17px] leading-relaxed text-text-muted">
+          {doc.data.description}
+        </p>
+      )}
+    </header>
+
+    <div class="prose prose-neutral max-w-none prose-headings:text-deep-text prose-a:text-primary">
       <Content />
     </div>
   </article>
