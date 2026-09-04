@@ -14,6 +14,8 @@ export interface SiteLink {
   descEn: string;
   /** 推荐入口 URL；有 alts 时此字段可略，仅作首要入口 */
   url?: string;
+  /** 英文（国际）版本的首选 URL。网页处于 /en 时优先用，缺省则回退 url。 */
+  urlEn?: string;
   /** 备用/镜像入口 */
   alts?: { label: string; url: string }[];
   /** 特殊协议类站点（访问需注意）: 走琥珀配色 */
@@ -77,14 +79,16 @@ export const RESOURCE_SITES: SiteLink[] = [
     descEn: "Online library — domains change; needs appropriate network access.",
     advisory: true,
     url: "https://zh.z-library.sk/",
+    urlEn: "https://z-library.sk/",
     alts: [{ label: "备用镜像 · 101ml.by", url: "https://zh.101ml.by/" }],
   },
   {
     abbr: "W",
     nameZh: "维基百科",
     nameEn: "Wikipedia",
-    descZh: "开放的多语言网络百科全书（此处指向中文版）。",
-    descEn: "Open multilingual encyclopedia (Chinese edition).",
+    descZh: "开放的多语言网络百科全书（中文环境下指向中文版，英文环境指向英文版）。",
+    descEn: "Free multilingual encyclopedia — Chinese edition on /zh, English edition on /en.",
     url: "https://zh.wikipedia.org/",
+    urlEn: "https://en.wikipedia.org/",
   },
 ];

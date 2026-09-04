@@ -12,7 +12,7 @@ const lang = (Astro.currentLocale ?? "zh") as string;
 import { getStaticPathsForLang } from "../../i18n/paths";
 export const getStaticPaths = getStaticPathsForLang;
 
-// ===== 团队页（复刻主应用 /official/team，数据来自 team-data.ts 静态 import）=====
+// ===== 团队页 =====
 const team = pickByLocale<TeamData>(lang, zhTeam, enTeam);
 
 const sidebarItems = [

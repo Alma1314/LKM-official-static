@@ -14,6 +14,8 @@ const en = lang === "en";
 // 取双语文案（站名/简介多数没有现成中文译名，原文保留）
 const nameOf = (r: (typeof RESOURCE_SITES)[number]) => (en ? r.nameEn : r.nameZh);
 const descOf = (r: (typeof RESOURCE_SITES)[number]) => (en ? r.descEn : r.descZh);
+// 目标 URL：/en 下若该站有英文(国际)入口则用之，否则回退默认 url
+const urlOf = (r: (typeof RESOURCE_SITES)[number]) => (en && r.urlEn ? r.urlEn : r.url);
 ---
 
 <OfficialLayout title={t(lang, "resources.page_title")} currentPath="/resources">
@@ -56,7 +58,7 @@ const descOf = (r: (typeof RESOURCE_SITES)[number]) => (en ? r.descEn : r.descZh
                     : "bg-primary/10 text-primary hover:bg-primary/20",
                 ]}
               >
-                <a href={site.url} target="_blank" rel="noopener noreferrer">
+                <a href={urlOf(site)} target="_blank" rel="noopener noreferrer">
                   {t(lang, "resources.go")}
                 </a>
               </span>
@@ -81,7 +83,7 @@ const descOf = (r: (typeof RESOURCE_SITES)[number]) => (en ? r.descEn : r.descZh
           ) : (
             // 普通站点：整卡可点
             <a
-              href={site.url}
+              href={urlOf(site)}
               target="_blank"
               rel="noopener noreferrer"
               class="profile-card group"

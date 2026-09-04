@@ -71,7 +71,7 @@ export const teamData = {
     ],
     techMembers: [
       { name: "七月可分数列", avatarKey: "七月可分数列.jpg", role: "会长", desc: "平凡的ICPCer" },
-      { name: "七月A（笨笨狐狸！）", avatarKey: "七月A.jpg", desc: "网站开发的主要牛马", dream: "以后不要当牛马" },
+      { name: "七月A", avatarKey: "七月A.jpg", desc: "网站开发的主要牛马", dream: "以后不要当牛马" },
       { name: "七月合成魔法", avatarKey: "七月合成魔法.jpg" },
     ],
     alumniMembers: [
