@@ -183,6 +183,11 @@ export const zh = {
   "notfound.title": "页面未找到",
   "notfound.message": "你访问的页面不存在。",
   "notfound.back": "返回首页",
+  "resources.page_title": "延伸资源网站",
+  "resources.page_sub": "学术机构、科研工具、文献站点等延伸资源的入口，持续更新中。",
+  "resources.network_hint": "部分站点可能需要合适的网络条件才能访问。",
+  "resources.go": "前往",
+  "resources.back_home": "返回首页",
 } as const;
 
 /**

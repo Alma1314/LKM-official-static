@@ -1,7 +1,6 @@
 ---
 // 根路径 / 重定向到默认语言首页 /zh/。
 // output:static 下不可用 Astro.redirect()，故用 meta refresh + 兜底链接实现静态 301。
-// redirectToDefaultLocale:true 需要此处有根 index 页方能生成重定向。
 const DEFAULT_HOME = "/zh/";
 ---
 <!doctype html>

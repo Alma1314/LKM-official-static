@@ -187,4 +187,9 @@ export const en = {
   "notfound.title": "Page not found",
   "notfound.message": "The page you are looking for does not exist.",
   "notfound.back": "Back to home",
+  "resources.page_title": "External Resource Sites",
+  "resources.page_sub": "Curated links to academic institutes, research tools and literature sites — updated over time.",
+  "resources.network_hint": "Some sites may require appropriate network access.",
+  "resources.go": "Visit",
+  "resources.back_home": "Back to home",
 } satisfies Zh;

@@ -9,9 +9,7 @@ const lang = (Astro.currentLocale ?? "zh") as string;
 import { getStaticPathsForLang } from "../../i18n/paths";
 export const getStaticPaths = getStaticPathsForLang;
 
-// ===== 官网首页（复刻主应用 /official，静态硬编码）=====
-
-// 发展历程 · 时间线数据（18 条，取自主应用 i18n zh_CN）
+// 发展历程 · 时间线数据
 const timelineItems = [
   { year: "2014.08.01", title: "可琪创立理科迷", description: "可琪创建了第一个群聊——〔理科迷宅基地〕，后几经更名，如〔理科α旗舰〕等。他是理科迷最初的创始人，社区现有的大部分框架与制度，都建立在他开创的基础之上。" },
   { year: "2014 ~ 2016", title: "群组扩张，与百度贴吧建立联系", description: "理科迷群组进入快速扩张期，从百度物理吧、数学吧、化学吧等社区吸收大量成员，其中与物理吧的联系最为密切。群友涵盖理科生与竞赛生，早期管理员团队也由活跃群友中选拔组建。" },
@@ -33,7 +31,7 @@ const timelineItems = [
   { year: "2026.06", title: "涅槃重生：官网重建与第二次暑假筹备", description: "汲取删库教训，以更稳健的架构重建官网与文件库。同期启动第二次暑假活动策划，理科迷以全新的姿态再度启程。" },
 ];
 
-// 最近更新 · 硬编码示例文章
+// 最近更新
 const newsItems = [
   { title: "理科迷全新官网正式上线", date: "2026 年 08 月 01 日", desc: "以更稳健的架构重建官网，为你带来更好的在线体验。" },
   { title: "第二次暑假活动开始筹备", date: "2026 年 06 月 15 日", desc: "活动策划部已启动新一轮活动策划，敬请期待。" },
@@ -146,7 +144,7 @@ const faqItems = [
     </div>
     <div class="relative mx-auto max-w-7xl px-4 md:px-6 py-16 md:py-20 lg:py-24">
       <div class="max-w-4xl mx-auto text-center">
-        <a href={langUrl(lang, "/communities")} class="profile-card group inline-block w-full sm:w-auto">
+        <a href={langUrl(lang, "/resources")} class="profile-card group inline-block w-full sm:w-auto">
           <div class="profile-inner p-8 flex flex-col items-center gap-4">
             <span class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-2xl">📚</span>
             <h3 class="text-xl font-bold text-deep-text group-hover:text-primary transition-colors">{t(lang, "home.section_resources")}</h3>
