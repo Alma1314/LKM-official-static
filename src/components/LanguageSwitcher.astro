@@ -8,11 +8,6 @@ const label: Record<Lang, string> = { zh: "中", en: "EN" };
 
 /**
  * 目标语言同页 URL。
- *
- * 页面尚未迁移到 [lang]（Task 6 未做）时，Astro.currentLocale 为 undefined，
- * Astro.getLocaleAbsoluteUrl 可能抛错或产生异常前缀。此处保守降级：
- * 手动剥掉 pathname 上已有语言前缀，再拼上目标语言前缀，保证切换器在该阶段
- * 不抛错、可正常渲染（链接指向的 /en/... 页面待 Task 6 迁移后生效）。
  */
 function localizedHref(target: Lang): string {
   const pathname = Astro.url.pathname;
