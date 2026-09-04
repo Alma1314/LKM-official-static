@@ -8,7 +8,7 @@ const lang = (Astro.currentLocale ?? "zh") as string;
 import { getStaticPathsForLang } from "../../i18n/paths";
 export const getStaticPaths = getStaticPathsForLang;
 
-// ===== 新闻资讯索引页（复刻主应用 /official/news，静态分类 + t() 标签）=====
+// ===== 新闻资讯索引页 =====
 
 const sections = [
   { label: t(lang, "news.label_announcement"), slug: "announcement", count: 3 },

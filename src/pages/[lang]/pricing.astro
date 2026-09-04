@@ -9,7 +9,7 @@ const lang = (Astro.currentLocale ?? "zh") as string;
 import { getStaticPathsForLang } from "../../i18n/paths";
 export const getStaticPaths = getStaticPathsForLang;
 
-// ===== 赞助与支持页（复刻主应用 /official/pricing，结构文案 t()，卡片数据阶段二）=====
+// ===== 赞助与支持页 =====
 
 const supportItems = [
   { icon: "usersPlus", title: "加入社区", desc: "最直接的方式就是加入理科迷官方 QQ 群组，关注官方账号、参与讨论、分享知识、上传文件。每一位活跃的成员都是社区最宝贵的财富。" },

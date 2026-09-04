@@ -1,5 +1,5 @@
 ---
-import OfficialLayout from "../../layouts/OfficialLayout.astro";
+import OfficialSidebarLayout from "../../layouts/OfficialSidebarLayout.astro";
 import Icon from "../../components/Icon.astro";
 import { t } from "../../i18n/index";
 
@@ -63,7 +63,16 @@ const platformItems = [
 ];
 ---
 
-<OfficialLayout title={t(lang, "about.title")} description={t(lang, "about.description")} currentPath="/about">
+<OfficialSidebarLayout
+  title={t(lang, "about.title")}
+  description={t(lang, "about.description")}
+  currentPath="/about"
+  sidebarItems={[
+    { text: t(lang, "services.sidebar_content"), href: "#content", icon: "pencil" },
+    { text: t(lang, "services.sidebar_events"), href: "#events", icon: "confetti" },
+    { text: t(lang, "services.sidebar_platform"), href: "#platform", icon: "database" },
+  ]}
+>
   {/* HeroText */}
   <section class="relative not-prose">
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
@@ -201,4 +210,4 @@ const platformItems = [
       </div>
     </div>
   </section>
-</OfficialLayout>
+</OfficialSidebarLayout>
