@@ -4,8 +4,18 @@
 
 /** 中文：2026 年 8 月 1 日 */
 const EN_MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 /** zh: "2026年8月1日"/"2026 年 8 月 1 日" 依 style 而定 */
@@ -24,7 +34,8 @@ export function formatDate(d: Date, lang: "zh" | "en"): string {
  */
 export function readingMinutes(markdown: string): number {
   const chars = (markdown.match(/[\u3400-\u9fff\u3040-\u30ff]/g) ?? []).length;
-  const words = (markdown.match(/[A-Za-z]+(?:['’-][A-Za-z]+)*/g) ?? []).length || 0;
+  const words =
+    (markdown.match(/[A-Za-z]+(?:['’-][A-Za-z]+)*/g) ?? []).length || 0;
   return Math.max(1, Math.round(chars / 350 + words / 220));
 }
 

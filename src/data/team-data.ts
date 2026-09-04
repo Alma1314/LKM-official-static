@@ -18,9 +18,22 @@ export const teamData = {
       },
     ],
     generalMembers: [
-      { name: "七月花", avatarKey: "七月花.jpg", desc: "一个有理想的PHD", dream: "梦想：每个孩子都能接触科学" },
-      { name: "七月知更鸟", avatarKey: "七月知更鸟.jpeg", desc: "待填写，这位还是学生在沉淀当中（让我们期待他的成长吧～" },
-      { name: "七月阿鸿", avatarKey: "七月阿鸿.jpeg", desc: "待填写，这位还是学生在沉淀当中（让我们期待他的成长吧～" },
+      {
+        name: "七月花",
+        avatarKey: "七月花.jpg",
+        desc: "一个有理想的PHD",
+        dream: "梦想：每个孩子都能接触科学",
+      },
+      {
+        name: "七月知更鸟",
+        avatarKey: "七月知更鸟.jpeg",
+        desc: "待填写，这位还是学生在沉淀当中（让我们期待他的成长吧～",
+      },
+      {
+        name: "七月阿鸿",
+        avatarKey: "七月阿鸿.jpeg",
+        desc: "待填写，这位还是学生在沉淀当中（让我们期待他的成长吧～",
+      },
       {
         name: "七月墨染",
         avatarKey: "七月墨染.png",
@@ -46,7 +59,8 @@ export const teamData = {
         name: "七月千寻",
         avatarKey: "七月千寻.jpg",
         desc: "19年初二时加入理科迷，现在我是一个待打工人，虽然在过去也是很饱含着梦想，但不是每个人都能当科学家的啦～˶>ᗜ<˶无论是过去的哥哥姐姐们，还是现在比我小的弟弟妹妹们，我都不希望我的遗憾能够出现在他们身上，也希望在未来更多的人能够喜欢理工科，不会像我一样轻易的放弃他们。",
-        dream: "梦想：未来的理想是让理科迷能够做大做强，能够实现它的最终目标，践行宗旨。但最眼前的还是要实行短期目标，建设一个成熟完整的线上管理团队。",
+        dream:
+          "梦想：未来的理想是让理科迷能够做大做强，能够实现它的最终目标，践行宗旨。但最眼前的还是要实行短期目标，建设一个成熟完整的线上管理团队。",
       },
     ],
     eventsMembers: [
@@ -70,8 +84,18 @@ export const teamData = {
       },
     ],
     techMembers: [
-      { name: "七月可分数列", avatarKey: "七月可分数列.jpg", role: "会长", desc: "平凡的ICPCer" },
-      { name: "七月A", avatarKey: "七月A.jpg", desc: "网站开发的主要牛马", dream: "以后不要当牛马" },
+      {
+        name: "七月可分数列",
+        avatarKey: "七月可分数列.jpg",
+        role: "会长",
+        desc: "平凡的ICPCer",
+      },
+      {
+        name: "七月A",
+        avatarKey: "七月A.jpg",
+        desc: "网站开发的主要牛马",
+        dream: "以后不要当牛马",
+      },
       { name: "七月合成魔法", avatarKey: "七月合成魔法.jpg" },
     ],
     alumniMembers: [
@@ -155,9 +179,22 @@ export const teamData = {
       junior: {
         label: "初中",
         members: [
-          { name: "七月badragon", avatarKey: "七月badragon.jpeg", desc: "关注理科迷谢谢喵" },
-          { name: "七月三七", avatarKey: "七月三七.jpeg", desc: "妄立誓则祸近", dream: "梦想：养一只小猫" },
-          { name: "七月焱 Echo", avatarKey: "七月焱 Echo.jpeg", desc: "解析数论爱好者" },
+          {
+            name: "七月badragon",
+            avatarKey: "七月badragon.jpeg",
+            desc: "关注理科迷谢谢喵",
+          },
+          {
+            name: "七月三七",
+            avatarKey: "七月三七.jpeg",
+            desc: "妄立誓则祸近",
+            dream: "梦想：养一只小猫",
+          },
+          {
+            name: "七月焱 Echo",
+            avatarKey: "七月焱 Echo.jpeg",
+            desc: "解析数论爱好者",
+          },
         ],
       },
       junior2: {
@@ -173,7 +210,13 @@ export const teamData = {
       },
       social: {
         label: "社会科学",
-        members: [{ name: "七月十一", avatarKey: "七月十一.jpg", desc: "经济类相关本科毕业，兴趣爱好涉猎广泛。" }],
+        members: [
+          {
+            name: "七月十一",
+            avatarKey: "七月十一.jpg",
+            desc: "经济类相关本科毕业，兴趣爱好涉猎广泛。",
+          },
+        ],
       },
       language: {
         label: "国际科技交流语言学习社",
@@ -217,7 +260,11 @@ export const teamData = {
             dream: "梦想：让大家开心,到达知识的Sekai边缘.",
             quote: "—— We must know,we will know.",
           },
-          { name: "七月一前", avatarKey: "七月一前.png", desc: "我是新闻办的一前" },
+          {
+            name: "七月一前",
+            avatarKey: "七月一前.png",
+            desc: "我是新闻办的一前",
+          },
           {
             name: "七月孙",
             avatarKey: "七月孙.jpg",
@@ -258,9 +305,22 @@ export const teamData = {
             dream: "梦想：保研对面那个华一继续研究数学",
             quote: "—— 万物皆数",
           },
-          { name: "七月彼方", avatarKey: "七月彼方.jpeg", desc: "分析与数值计算方向的硕士" },
-          { name: "七月有珠", avatarKey: "七月有珠.jpeg", desc: "可能是人（未必？）", quote: "—— 活着大于死了" },
-          { name: "七月Lichlet", avatarKey: "七月Lichlet.jpeg", desc: "大二数学系学生" },
+          {
+            name: "七月彼方",
+            avatarKey: "七月彼方.jpeg",
+            desc: "分析与数值计算方向的硕士",
+          },
+          {
+            name: "七月有珠",
+            avatarKey: "七月有珠.jpeg",
+            desc: "可能是人（未必？）",
+            quote: "—— 活着大于死了",
+          },
+          {
+            name: "七月Lichlet",
+            avatarKey: "七月Lichlet.jpeg",
+            desc: "大二数学系学生",
+          },
           {
             name: "七月胡冰阳",
             avatarKey: "七月胡冰阳.jpeg",
@@ -311,8 +371,17 @@ export const teamData = {
             dream: "梦想：成为一名优秀的教师",
             quote: "—— 真正的大师，永远都怀着一颗学徒的心",
           },
-          { name: "七月文", avatarKey: "七月文.jpeg", desc: "打摆子的好选手", dream: "梦想：想不干嘛就不干嘛" },
-          { name: "七月三尺水", avatarKey: "七月三尺水.jpg", desc: "化学，爱爱爱它！（化学的狂热热爱者）" },
+          {
+            name: "七月文",
+            avatarKey: "七月文.jpeg",
+            desc: "打摆子的好选手",
+            dream: "梦想：想不干嘛就不干嘛",
+          },
+          {
+            name: "七月三尺水",
+            avatarKey: "七月三尺水.jpg",
+            desc: "化学，爱爱爱它！（化学的狂热热爱者）",
+          },
         ],
       },
       biology: {
@@ -348,9 +417,24 @@ export const teamData = {
         label: "教材项目组",
         desc: "致力于编写高质量的理科教材，整合知识体系，为学习者提供系统化的学习资源。",
         members: [
-          { name: "七月大雄", avatarKey: "七月大雄.jpeg", desc: "什么都好奇一点", dream: "梦想：理想很多" },
-          { name: "七月Joshua Xue", avatarKey: "七月Joshua Xue.png", desc: "一位数学爱好者，想让所有人都能轻松学上数学" },
-          { name: "七月", avatarKey: "七月.png", desc: "吃喝拉撒", dream: "梦想：成为verity", quote: "—— 哎呦我去" },
+          {
+            name: "七月大雄",
+            avatarKey: "七月大雄.jpeg",
+            desc: "什么都好奇一点",
+            dream: "梦想：理想很多",
+          },
+          {
+            name: "七月Joshua Xue",
+            avatarKey: "七月Joshua Xue.png",
+            desc: "一位数学爱好者，想让所有人都能轻松学上数学",
+          },
+          {
+            name: "七月",
+            avatarKey: "七月.png",
+            desc: "吃喝拉撒",
+            dream: "梦想：成为verity",
+            quote: "—— 哎呦我去",
+          },
         ],
       },
       science: {

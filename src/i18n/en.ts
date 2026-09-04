@@ -72,29 +72,39 @@ export const en = {
   "team.founder_title": "Founder",
   "team.founder_subtitle": "Where LiKeLi began — it all started here",
   "team.general_title": "July Team · General Affairs",
-  "team.general_desc": "This department coordinates and plans affairs, guiding the team to collaborate and fulfill our shared purpose and goals. General Affairs suits members with strong multitasking and execution skills; cross-department coordination is often required.",
+  "team.general_desc":
+    "This department coordinates and plans affairs, guiding the team to collaborate and fulfill our shared purpose and goals. General Affairs suits members with strong multitasking and execution skills; cross-department coordination is often required.",
   "team.affairs_title": "July Team · Community Affairs",
-  "team.affairs_desc": "This department maintains order across community platforms, reads the mood of the groups, and keeps an active, productive learning discussion atmosphere, handling issues promptly. It suits members who are active in a platform community and have good crisis-response skills.",
+  "team.affairs_desc":
+    "This department maintains order across community platforms, reads the mood of the groups, and keeps an active, productive learning discussion atmosphere, handling issues promptly. It suits members who are active in a platform community and have good crisis-response skills.",
   "team.events_title": "July Team · Event Planning",
-  "team.events_desc": "This department runs events across platforms from planning through execution, and oversees the Professional Committee, bringing richer activities and experiences so everyone truly learns. It welcomes members with inspiration, creativity, and the drive to make it happen.",
+  "team.events_desc":
+    "This department runs events across platforms from planning through execution, and oversees the Professional Committee, bringing richer activities and experiences so everyone truly learns. It welcomes members with inspiration, creativity, and the drive to make it happen.",
   "team.news_title": "News Office",
-  "team.news_desc": "This department runs official promotion accounts on various platforms and handles diplomacy, sustaining outreach and influence. It produces science-promotion content for the public. It oversees a science project group and a translation project group to share knowledge across languages and break down information barriers.",
+  "team.news_desc":
+    "This department runs official promotion accounts on various platforms and handles diplomacy, sustaining outreach and influence. It produces science-promotion content for the public. It oversees a science project group and a translation project group to share knowledge across languages and break down information barriers.",
   "team.advisors_title": "Advisors",
-  "team.advisors_desc": "This team comprises external advisors to LiKeLi, supporting our work groups and project groups — for example legal counsel and other social organizations.",
+  "team.advisors_desc":
+    "This team comprises external advisors to LiKeLi, supporting our work groups and project groups — for example legal counsel and other social organizations.",
   "team.professional_title": "Professional Committee",
-  "team.professional_desc": "This committee provides professional knowledge for activities and projects, enriching the substance of each specialty. Its members are committed to deep work in their fields and will later oversee academic project groups for richer academic exchange.",
+  "team.professional_desc":
+    "This committee provides professional knowledge for activities and projects, enriching the substance of each specialty. Its members are committed to deep work in their fields and will later oversee academic project groups for richer academic exchange.",
   "team.tech_title": "Technical Committee",
-  "team.tech_desc": "This committee develops and maintains the technology behind our platforms and activities, and will bring more practical and better open-source projects in the future. Programming and web-building skills are needed.",
+  "team.tech_desc":
+    "This committee develops and maintains the technology behind our platforms and activities, and will bring more practical and better open-source projects in the future. Programming and web-building skills are needed.",
   "team.alumni_title": "Members Who Have Left",
-  "team.alumni_desc": "The members below once contributed to LiKeLi but can no longer be reached. No matter what, LiKeLi's doors will always be open to you.",
+  "team.alumni_desc":
+    "The members below once contributed to LiKeLi but can no longer be reached. No matter what, LiKeLi's doors will always be open to you.",
   "team.project_title": "Project Team — LiKeLi",
   "team.project_empty": "No members yet — join us!",
   "about.title": "About",
   "about.description": "About the LiKeLi community",
   "about.hero_title": "About LiKeLi",
-  "about.hero_paragraph": "LiKeLi (LKM) was founded in 2014 as a community of science and technology enthusiasts. We break down professional barriers so every lover of reason and technology can find like-minded peers and explore how everything works together.",
+  "about.hero_paragraph":
+    "LiKeLi (LKM) was founded in 2014 as a community of science and technology enthusiasts. We break down professional barriers so every lover of reason and technology can find like-minded peers and explore how everything works together.",
   "about.values_title": "Bring science back to everyone",
-  "about.values_subtitle": "We believe science and technology should be within reach — not out of reach.",
+  "about.values_subtitle":
+    "We believe science and technology should be within reach — not out of reach.",
   "about.team_section": "Our Team",
   "about.team_section_sub": "LiKeLi is better because of you",
   "about.team_more": "More Members",
@@ -106,7 +116,8 @@ export const en = {
   "about.timeline_next": "Next",
   "about.cta_welcome": "Welcome to ",
   "about.cta_welcome_accent": "LiKeLi",
-  "about.cta_body": "Whether you want to learn, create, or join our team, LiKeLi welcomes you.",
+  "about.cta_body":
+    "Whether you want to learn, create, or join our team, LiKeLi welcomes you.",
   "about.cta_services": "Learn About Services",
   "communities.title": "QQ Community — LiKeLi",
   "communities.sidebar_general": "General Group",
@@ -133,15 +144,19 @@ export const en = {
   "services.sidebar_events": "Community Events",
   "services.sidebar_platform": "Knowledge Platform",
   "services.section_content": "Content Creation",
-  "services.section_content_sub": "High-quality content co-created by team members and the community, spanning many fields.",
+  "services.section_content_sub":
+    "High-quality content co-created by team members and the community, spanning many fields.",
   "services.section_events": "Community Events",
-  "services.section_events_sub": "From online seminars to holiday activities, LiKeLi offers members a rich and varied set of interactions.",
+  "services.section_events_sub":
+    "From online seminars to holiday activities, LiKeLi offers members a rich and varied set of interactions.",
   "services.section_platform": "Knowledge Platform",
-  "services.section_platform_sub": "LiKeLi is building a knowledge-management platform for its members, supporting learning and collaboration.",
+  "services.section_platform_sub":
+    "LiKeLi is building a knowledge-management platform for its members, supporting learning and collaboration.",
   "services.cta_question_pre": "Interested in ",
   "services.cta_question_accent": "LiKeLi",
   "services.cta_question_post": "?",
-  "services.cta_body": "Whether you want to join the community, submit your work, or propose a collaboration, we welcome you.",
+  "services.cta_body":
+    "Whether you want to join the community, submit your work, or propose a collaboration, we welcome you.",
   "services.cta_contact": "Contact Us",
   "projects.title": "Project Hub",
   "projects.pinned": "Pinned",
@@ -150,34 +165,44 @@ export const en = {
   "projects.role_missing": "Wanted: ",
   "pricing.title": "Support Us",
   "pricing.hero_title": "Helping tech reach further",
-  "pricing.hero_paragraph": "LiKeLi is a non-profit community of science and technology enthusiasts. Every member's support is what keeps us going.",
+  "pricing.hero_paragraph":
+    "LiKeLi is a non-profit community of science and technology enthusiasts. Every member's support is what keeps us going.",
   "pricing.section_support": "Ways to Support",
-  "pricing.section_support_sub": "Every bit of your strength helps LiKeLi get better. Here are some ways to take part in building the community.",
+  "pricing.section_support_sub":
+    "Every bit of your strength helps LiKeLi get better. Here are some ways to take part in building the community.",
   "pricing.section_faq": "FAQ",
-  "pricing.section_faq_sub": "Some common questions about ways to support us — hopefully these answer yours.",
+  "pricing.section_faq_sub":
+    "Some common questions about ways to support us — hopefully these answer yours.",
   "pricing.cta_title": "Ready to make a difference for LiKeLi?",
-  "pricing.cta_body": "Join our community and, together with like-minded friends, help tech reach further.",
+  "pricing.cta_body":
+    "Join our community and, together with like-minded friends, help tech reach further.",
   "pricing.cta_contact": "Contact Us",
   "funding.title": "Funding System — LiKeLi",
   "funding.heading": "System in preparation",
-  "funding.para_1": "LiKeLi is committed to sustainable development once income and expenses are balanced.",
-  "funding.para_2": "Since it launched, the platform's operating costs (servers, domains, etc.) have been covered by the management team out of pocket.",
-  "funding.para_3": "We plan to launch a formal funding system once the platform is running stably.",
+  "funding.para_1":
+    "LiKeLi is committed to sustainable development once income and expenses are balanced.",
+  "funding.para_2":
+    "Since it launched, the platform's operating costs (servers, domains, etc.) have been covered by the management team out of pocket.",
+  "funding.para_3":
+    "We plan to launch a formal funding system once the platform is running stably.",
   "funding.costs_title": "About operating costs",
   "funding.cost_server": "Server and domain fees",
   "funding.cost_storage": "File storage and CDN bandwidth",
   "funding.cost_sms": "SMS and email services",
   "funding.thanks": "Thank you to everyone supporting LiKeLi",
-  "funding.thanks_note": "We promise transparent use of all funds and regular financial reports. If you'd like to sponsor us, please reach out.",
+  "funding.thanks_note":
+    "We promise transparent use of all funds and regular financial reports. If you'd like to sponsor us, please reach out.",
   "funding.button": "Not yet available",
   "contact.title": "Contact Us",
   "contact.hero_title": "We'd love to hear from you!",
   "contact.section_message": "Leave us a message",
-  "contact.section_message_sub": "If you'd like to join LiKeLi, offer suggestions, or propose a collaboration, please reach us via the form below. You can also check the FAQ — the answer may already be there.",
+  "contact.section_message_sub":
+    "If you'd like to join LiKeLi, offer suggestions, or propose a collaboration, please reach us via the form below. You can also check the FAQ — the answer may already be there.",
   "contact.label_name": "Your name",
   "contact.label_email": "Email",
   "contact.label_message": "Message",
-  "contact.consent_text": "By submitting this form, you agree to let us collect your personal information to reply to you.",
+  "contact.consent_text":
+    "By submitting this form, you agree to let us collect your personal information to reply to you.",
   "contact.submit": "Send Message",
   "contact.reply_note": "We usually reply to messages within 24 hours.",
   "contact.section_contact": "Contact Us",
@@ -189,8 +214,10 @@ export const en = {
   "notfound.message": "The page you are looking for does not exist.",
   "notfound.back": "Back to home",
   "resources.page_title": "External Resource Sites",
-  "resources.page_sub": "Curated links to academic institutes, research tools and literature sites — updated over time.",
-  "resources.network_hint": "Some sites may require appropriate network access.",
+  "resources.page_sub":
+    "Curated links to academic institutes, research tools and literature sites — updated over time.",
+  "resources.network_hint":
+    "Some sites may require appropriate network access.",
   "resources.go": "Visit",
   "resources.back_home": "Back to home",
 } satisfies Zh;

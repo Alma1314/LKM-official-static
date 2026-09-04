@@ -68,27 +68,36 @@ export const zh = {
   "team.founder_title": "创始人",
   "team.founder_subtitle": "理科迷的起点，一切从这里开始",
   "team.general_title": "七月团队 · 总务部",
-  "team.general_desc": "该团队部门职责是统筹和规划相关事宜，引领团队能够互相协作，落实我们共同的宗旨和目标。总务部更适合有多线程处理能力以及执行能力的成员，会有跨部门的需要。",
+  "team.general_desc":
+    "该团队部门职责是统筹和规划相关事宜，引领团队能够互相协作，落实我们共同的宗旨和目标。总务部更适合有多线程处理能力以及执行能力的成员，会有跨部门的需要。",
   "team.affairs_title": "七月团队 · 群务部",
-  "team.affairs_desc": "该团队部门职责是负责各个平台上面社群秩序，把握群内风向，确保群处于活跃并且持续有效的学习讨论氛围当中，有情况的时候第一时间处理。群务部更适合有常驻某一平台社群的，并有一定的应急处理能力。",
+  "team.affairs_desc":
+    "该团队部门职责是负责各个平台上面社群秩序，把握群内风向，确保群处于活跃并且持续有效的学习讨论氛围当中，有情况的时候第一时间处理。群务部更适合有常驻某一平台社群的，并有一定的应急处理能力。",
   "team.events_title": "七月团队 · 活动策划部",
-  "team.events_desc": "该团队负责的是各个平台上面的活动，一条龙从策划开始，一直到执行，下管专业委员会，给大家带来更多更好的活动和体验，让大家能够真正的学到知识。适合有灵感、有创意并由能把这些全部落实的行动力加入。",
+  "team.events_desc":
+    "该团队负责的是各个平台上面的活动，一条龙从策划开始，一直到执行，下管专业委员会，给大家带来更多更好的活动和体验，让大家能够真正的学到知识。适合有灵感、有创意并由能把这些全部落实的行动力加入。",
   "team.news_title": "新闻办",
-  "team.news_desc": "该团队部门职责是负责各平台宣传账号的持续运营，以及外交事宜，持续宣传输出并扩大影响能力，并为此向大众输出科普内容，促进传播知识。新闻办会下属一个科普项目组，以及翻译项目组，为科普事业繁荣昌盛，以及中外科技爱好者能有所知识共享，破除信息差和壁垒。",
+  "team.news_desc":
+    "该团队部门职责是负责各平台宣传账号的持续运营，以及外交事宜，持续宣传输出并扩大影响能力，并为此向大众输出科普内容，促进传播知识。新闻办会下属一个科普项目组，以及翻译项目组，为科普事业繁荣昌盛，以及中外科技爱好者能有所知识共享，破除信息差和壁垒。",
   "team.advisors_title": "顾问团",
-  "team.advisors_desc": "该团队部门职责是属于理科迷的外部顾问，为理科迷的工作组，项目组事业提供相应的支持，如法律询问、其他社会组织团体等等。",
+  "team.advisors_desc":
+    "该团队部门职责是属于理科迷的外部顾问，为理科迷的工作组，项目组事业提供相应的支持，如法律询问、其他社会组织团体等等。",
   "team.professional_title": "专业委员会",
-  "team.professional_desc": "该团队部门职责是负责活动、项目等诸多提供专业知识，充实各个专业实际内容。成员是已经确定了想要在这方面深耕的，未来会下管学术项目组，带来更好的学术交流等内容。",
+  "team.professional_desc":
+    "该团队部门职责是负责活动、项目等诸多提供专业知识，充实各个专业实际内容。成员是已经确定了想要在这方面深耕的，未来会下管学术项目组，带来更好的学术交流等内容。",
   "team.tech_title": "技术委员会",
-  "team.tech_desc": "该团队部门职责是负责各平台、各活动的相应技术上的技术开发与维护，未来将给大家带来更多实用性更强更好的开源项目。需要有编程知识，网站搭建等能。",
+  "team.tech_desc":
+    "该团队部门职责是负责各平台、各活动的相应技术上的技术开发与维护，未来将给大家带来更多实用性更强更好的开源项目。需要有编程知识，网站搭建等能。",
   "team.alumni_title": "已离开或失联成员",
-  "team.alumni_desc": "以下成员曾为理科迷作出贡献，因各种原因现无法联系，不管如何理科迷的大门永远向你们打开。",
+  "team.alumni_desc":
+    "以下成员曾为理科迷作出贡献，因各种原因现无法联系，不管如何理科迷的大门永远向你们打开。",
   "team.project_title": "项目团队 —— 理科迷",
   "team.project_empty": "暂无成员，期待你的加入",
   "about.title": "关于",
   "about.description": "关于理科迷社区",
   "about.hero_title": "关于理科迷",
-  "about.hero_paragraph": "理科迷 (LKM) 创立于 2014 年，是由科技爱好者组成的社区。我们打破专业门槛，让每一位热爱理性、崇尚科技的人都能在这里找到同频的伙伴，共同探索万物运转的奥秘。",
+  "about.hero_paragraph":
+    "理科迷 (LKM) 创立于 2014 年，是由科技爱好者组成的社区。我们打破专业门槛，让每一位热爱理性、崇尚科技的人都能在这里找到同频的伙伴，共同探索万物运转的奥秘。",
   "about.values_title": "让科学回归每一个人",
   "about.values_subtitle": "我们相信，科学与技术应当触手可及，而非高高在上。",
   "about.team_section": "我们的团队",
@@ -102,7 +111,8 @@ export const zh = {
   "about.timeline_next": "下一条",
   "about.cta_welcome": "欢迎加入",
   "about.cta_welcome_accent": "理科迷",
-  "about.cta_body": "无论你是想学习交流、参与创作，还是加入我们的团队，理科迷都欢迎你。",
+  "about.cta_body":
+    "无论你是想学习交流、参与创作，还是加入我们的团队，理科迷都欢迎你。",
   "about.cta_services": "了解服务",
   "communities.title": "QQ社群 —— 理科迷",
   "communities.sidebar_general": "爱好者总群",
@@ -129,15 +139,19 @@ export const zh = {
   "services.sidebar_events": "社区活动",
   "services.sidebar_platform": "知识平台",
   "services.section_content": "内容创作",
-  "services.section_content_sub": "由团队成员和社区成员共创的高质量内容，覆盖多个学科领域。",
+  "services.section_content_sub":
+    "由团队成员和社区成员共创的高质量内容，覆盖多个学科领域。",
   "services.section_events": "社区活动",
-  "services.section_events_sub": "从线上研讨到假期活动，理科迷为社区成员提供丰富多彩的互动体验。",
+  "services.section_events_sub":
+    "从线上研讨到假期活动，理科迷为社区成员提供丰富多彩的互动体验。",
   "services.section_platform": "知识平台",
-  "services.section_platform_sub": "理科迷正在建设面向社区成员的知识管理平台，助力学习与协作。",
+  "services.section_platform_sub":
+    "理科迷正在建设面向社区成员的知识管理平台，助力学习与协作。",
   "services.cta_question_pre": "对",
   "services.cta_question_accent": "理科迷",
   "services.cta_question_post": "感兴趣？",
-  "services.cta_body": "无论你是想加入社区、投稿创作作品，还是提出合作建议，我们都非常欢迎。",
+  "services.cta_body":
+    "无论你是想加入社区、投稿创作作品，还是提出合作建议，我们都非常欢迎。",
   "services.cta_contact": "联系我们",
   "projects.title": "项目大厅",
   "projects.pinned": "置顶",
@@ -146,13 +160,16 @@ export const zh = {
   "projects.role_missing": "缺",
   "pricing.title": "赞助与支持",
   "pricing.hero_title": "让科技传播走得更远",
-  "pricing.hero_paragraph": "理科迷是一个非营利的科技爱好者社区。每一位成员的支持，都是我们持续前行的动力。",
+  "pricing.hero_paragraph":
+    "理科迷是一个非营利的科技爱好者社区。每一位成员的支持，都是我们持续前行的动力。",
   "pricing.section_support": "支持方式",
-  "pricing.section_support_sub": "你的每一份力量，都能帮助理科迷变得更好。以下是你参与社区建设的几种方式。",
+  "pricing.section_support_sub":
+    "你的每一份力量，都能帮助理科迷变得更好。以下是你参与社区建设的几种方式。",
   "pricing.section_faq": "常见问题",
   "pricing.section_faq_sub": "关于支持方式的一些常见疑问，也许能解答你的困惑。",
   "pricing.cta_title": "准备好为理科迷贡献一份力量了？",
-  "pricing.cta_body": "加入我们的社区，与志同道合的伙伴一起，让科技传播走得更远。",
+  "pricing.cta_body":
+    "加入我们的社区，与志同道合的伙伴一起，让科技传播走得更远。",
   "pricing.cta_contact": "联系我们",
   "funding.title": "资助系统 —— 理科迷",
   "funding.heading": "系统筹备中",
@@ -164,16 +181,19 @@ export const zh = {
   "funding.cost_storage": "文件存储与 CDN 带宽",
   "funding.cost_sms": "短信与邮件服务",
   "funding.thanks": "感谢每一位支持理科迷的你",
-  "funding.thanks_note": "我们承诺所有资金使用公开透明，定期发布财务报告。如有赞助意向，欢迎联系我们。",
+  "funding.thanks_note":
+    "我们承诺所有资金使用公开透明，定期发布财务报告。如有赞助意向，欢迎联系我们。",
   "funding.button": "暂未开放",
   "contact.title": "联系我们",
   "contact.hero_title": "期待听到你的声音！",
   "contact.section_message": "给我们留言",
-  "contact.section_message_sub": "如果你想加入理科迷、提出建议或合作意向，欢迎通过下方表单联系我们。也可以先看看常见问题，也许已经有了你想要的答案。",
+  "contact.section_message_sub":
+    "如果你想加入理科迷、提出建议或合作意向，欢迎通过下方表单联系我们。也可以先看看常见问题，也许已经有了你想要的答案。",
   "contact.label_name": "你的名字",
   "contact.label_email": "电子邮箱",
   "contact.label_message": "留言内容",
-  "contact.consent_text": "提交此表单即表示你同意我们收集你的个人信息用于联系回复。",
+  "contact.consent_text":
+    "提交此表单即表示你同意我们收集你的个人信息用于联系回复。",
   "contact.submit": "发送留言",
   "contact.reply_note": "我们通常会在 24 小时内回复你的留言。",
   "contact.section_contact": "联系我们",
@@ -185,7 +205,8 @@ export const zh = {
   "notfound.message": "你访问的页面不存在。",
   "notfound.back": "返回首页",
   "resources.page_title": "延伸资源网站",
-  "resources.page_sub": "学术机构、科研工具、文献站点等延伸资源的入口，持续更新中。",
+  "resources.page_sub":
+    "学术机构、科研工具、文献站点等延伸资源的入口，持续更新中。",
   "resources.network_hint": "部分站点可能需要合适的网络条件才能访问。",
   "resources.go": "前往",
   "resources.back_home": "返回首页",

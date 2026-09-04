@@ -5,7 +5,6 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import typescriptParser from "@typescript-eslint/parser";
 
-
 export default [
   js.configs.recommended,
   ...eslintPluginAstro.configs["flat/recommended"],

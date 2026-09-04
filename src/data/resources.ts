@@ -76,7 +76,8 @@ export const RESOURCE_SITES: SiteLink[] = [
     nameZh: "Z-Library",
     nameEn: "Z-Library",
     descZh: "大型在线数字图书馆（域名多变，需要适当的网络条件；请注意版权）。",
-    descEn: "Online library — domains change; needs appropriate network access.",
+    descEn:
+      "Online library — domains change; needs appropriate network access.",
     advisory: true,
     url: "https://zh.z-library.sk/",
     urlEn: "https://z-library.sk/",
@@ -86,8 +87,10 @@ export const RESOURCE_SITES: SiteLink[] = [
     abbr: "W",
     nameZh: "维基百科",
     nameEn: "Wikipedia",
-    descZh: "开放的多语言网络百科全书（中文环境下指向中文版，英文环境指向英文版）。",
-    descEn: "Free multilingual encyclopedia — Chinese edition on /zh, English edition on /en.",
+    descZh:
+      "开放的多语言网络百科全书（中文环境下指向中文版，英文环境指向英文版）。",
+    descEn:
+      "Free multilingual encyclopedia — Chinese edition on /zh, English edition on /en.",
     url: "https://zh.wikipedia.org/",
     urlEn: "https://en.wikipedia.org/",
   },
