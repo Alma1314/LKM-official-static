@@ -3,6 +3,7 @@ title: Science Frontier Column Launches
 description: Curating frontier science and technology worth your attention.
 publishDate: 2025-01-08
 category: news
+image: https://picsum.photos/seed/lkm-tech-frontier/1200/650
 tags: [column, science]
 lang: en
 ---

@@ -58,6 +58,7 @@ const enEmpty = isEn && posts.length === 0;
                 date={doc.data.publishDate}
                 minutes={readingMinutes(doc.body ?? "")}
                 tagLabel={tagLabel}
+                image={doc.data.image}
               />
             );
           })}

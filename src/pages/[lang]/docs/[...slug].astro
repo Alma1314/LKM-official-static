@@ -67,13 +67,22 @@ const nextHref = docLink(next);
 
 <OfficialLayout title={doc.data.title} description={doc.data.description}>
   <article class="article-prose mx-auto max-w-3xl px-4 py-10 md:py-14">
-    {/* 顶部渐变“封面”占位（无图时的版面锚点） */}
+    {/* 文章顶部配图（无 image 时才用标题色相渐变兜底） */}
     <div
-      class="relative mb-8 h-32 w-full overflow-hidden rounded-2xl md:h-44"
-      aria-hidden="true"
-      style={{ background: coverGradient(doc.data.title) }}
+      class="relative mb-8 h-56 w-full overflow-hidden rounded-2xl border border-surface-3 md:h-72"
+      style={
+        doc.data.image ? undefined : { background: coverGradient(doc.data.title) }
+      }
     >
-      <div class="absolute inset-0 bg-black/5" />
+      {doc.data.image && (
+        <img
+          src={doc.data.image}
+          alt=""
+          loading="eager"
+          decoding="async"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+      )}
     </div>
 
     <a

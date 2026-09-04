@@ -3,6 +3,7 @@ title: Event Planning Office Established
 description: Launching the first summer event plan — a new chapter in community operations.
 publishDate: 2025-04-02
 category: news
+image: https://picsum.photos/seed/lkm-team-activity/1200/650
 tags: [team, event]
 lang: en
 ---

@@ -3,6 +3,7 @@ title: 社区重建一周年回顾
 description: 从删库归零到涅槃重生，社区与大家一起走过的这一年。
 publishDate: 2025-08-04
 category: news
+image: https://picsum.photos/seed/lkm-anniversary/1200/650
 tags: [纪念, 社区]
 lang: zh
 ---

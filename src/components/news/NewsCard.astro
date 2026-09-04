@@ -2,8 +2,8 @@
 import { coverGradient, formatDate } from "./format";
 
 /**
- * 文章卡片（AstroWind 观感）：顶部渐变色块“封面” + 摘要 + 底部元信息。
- * 全卡为链接，适配等分布局取整体高度。
+ * 文章卡片：顶部封面（有 image 显示真实图；无则回退到标题色相渐变），
+ * 摘要与底部元信息。全卡为链接，适配等高网格。
  */
 interface Props {
   lang: "zh" | "en";
@@ -13,9 +13,10 @@ interface Props {
   date: Date;
   minutes: number;
   tagLabel?: string;
+  image?: string;
 }
 
-const { lang, href, title, desc, date, minutes, tagLabel } = Astro.props;
+const { lang, href, title, desc, date, minutes, tagLabel, image } = Astro.props;
 const dateLabel = formatDate(date, lang);
 const minutesLabel = lang === "en" ? `${minutes} min read` : `${minutes} 分钟`;
 const gradient = coverGradient(title);
@@ -25,8 +26,19 @@ const gradient = coverGradient(title);
   href={href}
   class="group flex h-full flex-col overflow-hidden rounded-xl border border-surface-3 bg-card-bg transition-all duration-200 hover:-translate-y-1 hover:border-primary/60 hover:shadow-lg"
 >
-  {/* 封面渐变占位 */}
-  <div class="relative h-24 w-full shrink-0 md:h-28" aria-hidden="true" style={{ background: gradient }}>
+  <div
+    class="relative h-40 w-full shrink-0 overflow-hidden md:h-44"
+    style={image ? undefined : { background: gradient }}
+  >
+    {image ? (
+      <img
+        src={image}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+    ) : undefined}
     {tagLabel && (
       <span class="absolute bottom-3 left-4 rounded-full bg-black/30 px-2.5 py-0.5 text-[11px] font-medium text-white backdrop-blur-sm">
         {tagLabel}
