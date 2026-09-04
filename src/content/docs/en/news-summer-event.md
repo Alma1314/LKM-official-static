@@ -8,8 +8,14 @@ tags: [event, summer]
 lang: en
 ---
 
-The second LiKeLi summer event is now officially on the calendar.
+## Why Do This Every Year
 
-This time, talks, subject seminars and fun quizzes are being reworked to be even better organized.
+Doing something once is different from making something people want to come back to. The first summer camp showed what keeps people in — subject mini-sessions, an ask-anything slot, linked mini-challenges — and what should be dropped.
 
-Schedule and sign-up details will be announced on the website and in our official groups.
+This summer, the Event Planning Office keeps the parts that worked, trims the slow parts, and makes sign-up and updates straightforward, so arriving isn’t guessing where and when to show up.
+
+## The Rough Shape This Year
+
+The plan converges on three tracks: subject talks and seminars, breakout sessions built around discussion, and a few optional warm-ups. More details follow in stages as the date nears.
+
+“In planning” is real work — themes, volunteer roles and sign-up wording are converging. Once they settle, we publish schedule and registration together, so nobody waits on half a timetable.

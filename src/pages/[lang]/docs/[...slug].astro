@@ -66,90 +66,163 @@ const nextHref = docLink(next);
 ---
 
 <OfficialLayout title={doc.data.title} description={doc.data.description}>
-  <article class="article-prose mx-auto max-w-3xl px-4 py-10 md:py-14">
-    {/* 文章顶部配图（无 image 时才用标题色相渐变兜底） */}
-    <div
-      class="relative mb-8 h-56 w-full overflow-hidden rounded-2xl border border-surface-3 md:h-72"
-      style={
-        doc.data.image ? undefined : { background: coverGradient(doc.data.title) }
-      }
-    >
-      {doc.data.image && (
-        <img
-          src={doc.data.image}
-          alt=""
-          loading="eager"
-          decoding="async"
-          class="absolute inset-0 h-full w-full object-cover"
-        />
-      )}
+  <div class="mx-auto max-w-6xl gap-x-12 px-4 py-10 md:px-6 md:py-14 lg:grid lg:grid-cols-[minmax(0,1fr)_16rem]">
+    <div class="min-w-0">
+      <article class="article-prose">
+        {/* 文章顶部配图（无 image 时才用标题色相渐变兜底） */}
+        <div
+          class="relative mb-8 aspect-[16/7] w-full overflow-hidden rounded-2xl border border-surface-3"
+          style={doc.data.image ? undefined : { background: coverGradient(doc.data.title) }}
+        >
+          {doc.data.image && (
+            <img
+              src={doc.data.image}
+              alt=""
+              loading="eager"
+              decoding="async"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+          )}
+        </div>
+
+        <a
+          href={langUrl(lang, "/news")}
+          class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+        >
+          {en ? "← Back to posts" : "← 返回文章"}
+        </a>
+
+        <header class="mt-6">
+          <h1 class="font-heading text-3xl md:text-4xl font-bold leading-tight tracking-[-0.01em] text-deep-text">
+            {doc.data.title}
+          </h1>
+          <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted">
+            <time datetime={ymd}>{dateText}</time>
+            <span class="h-1 w-1 rounded-full bg-surface-3" />
+            <span>{metaMinutes}</span>
+          </div>
+          {doc.data.description && (
+            <p class="mt-6 text-[17px] leading-relaxed text-text-muted">{doc.data.description}</p>
+          )}
+        </header>
+
+        <div class="prose prose-neutral max-w-none prose-headings:text-deep-text prose-a:text-primary mt-8">
+          <Content />
+        </div>
+
+        {(prevHref || nextHref) && (
+          <nav
+            class="mt-14 flex flex-col gap-3 border-t border-surface-3 pt-6 sm:flex-row sm:items-stretch sm:justify-between"
+            aria-label="Previous or next post"
+          >
+            {prevHref && prev ? (
+              <a
+                href={prevHref}
+                class="group inline-flex w-full flex-col gap-1 rounded-lg p-2 transition-colors hover:bg-surface-3/40 sm:w-[calc(50%-0.75rem)]"
+              >
+                <span class="text-xs uppercase tracking-wide text-text-muted">{en ? "Older" : "上一篇"}</span>
+                <span class="text-sm font-semibold text-deep-text line-clamp-1 group-hover:text-primary">
+                  {prev.data.title}
+                </span>
+              </a>
+            ) : (
+              <span class="hidden flex-1 sm:block" />
+            )}
+
+            {nextHref && next ? (
+              <a
+                href={nextHref}
+                class="group inline-flex w-full flex-col items-end gap-1 rounded-lg p-2 text-right transition-colors hover:bg-surface-3/40 sm:w-[calc(50%-0.75rem)]"
+              >
+                <span class="text-xs uppercase tracking-wide text-text-muted">{en ? "Newer" : "下一篇"}</span>
+                <span class="text-sm font-semibold text-deep-text line-clamp-1 group-hover:text-primary">
+                  {next.data.title}
+                </span>
+              </a>
+            ) : (
+              <span class="hidden flex-1 sm:block" />
+            )}
+          </nav>
+        )}
+      </article>
     </div>
 
-    <a
-      href={langUrl(lang, "/news")}
-      class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-    >
-      {en ? "← Back to posts" : "← 返回文章"}
-    </a>
-
-    <header class="mt-6">
-      <h1 class="font-heading text-3xl md:text-4xl font-bold leading-tight tracking-[-0.01em] text-deep-text">
-        {doc.data.title}
-      </h1>
-      <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-text-muted">
-        <time datetime={ymd}>{dateText}</time>
-        <span class="h-1 w-1 rounded-full bg-surface-3" />
-        <span>{metaMinutes}</span>
+    {/* 右侧阅读目录（标题来自正文已渲染的 h2–h4，脚本实时填充） */}
+    <aside class="hidden lg:block" aria-label={en ? "Table of contents" : "阅读目录"}>
+      <div class="article-toc sticky top-24 max-h-[calc(100vh-8rem)] overflow-auto rounded-xl border border-surface-3 bg-card-bg p-5">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-text-muted">
+          {en ? "On this page" : "阅读目录"}
+        </p>
+        <nav data-toc-list class="space-y-1 text-sm" />
       </div>
-
-      {doc.data.description && (
-        <p class="mt-6 text-[17px] leading-relaxed text-text-muted">{doc.data.description}</p>
-      )}
-    </header>
-
-    <div class="prose prose-neutral max-w-none prose-headings:text-deep-text prose-a:text-primary mt-8">
-      <Content />
-    </div>
-
-    {(prevHref || nextHref) && (
-      <nav
-        class="mt-14 flex flex-col gap-3 border-t border-surface-3 pt-6 sm:flex-row sm:items-stretch sm:justify-between"
-        aria-label="Previous or next post"
-      >
-        {prevHref && prev ? (
-          <a
-            href={prevHref}
-            class="group inline-flex w-full flex-col gap-1 rounded-lg p-2 transition-colors hover:bg-surface-3/40 sm:w-[calc(50%-0.75rem)]"
-          >
-            <span class="text-xs uppercase tracking-wide text-text-muted">{en ? "Older" : "上一篇"}</span>
-            <span class="text-sm font-semibold text-deep-text line-clamp-1 group-hover:text-primary">
-              {prev.data.title}
-            </span>
-          </a>
-        ) : (
-          <span class="hidden flex-1 sm:block" />
-        )}
-
-        {nextHref && next ? (
-          <a
-            href={nextHref}
-            class="group inline-flex w-full flex-col items-end gap-1 rounded-lg p-2 text-right transition-colors hover:bg-surface-3/40 sm:w-[calc(50%-0.75rem)]"
-          >
-            <span class="text-xs uppercase tracking-wide text-text-muted">{en ? "Newer" : "下一篇"}</span>
-            <span class="text-sm font-semibold text-deep-text line-clamp-1 group-hover:text-primary">
-              {next.data.title}
-            </span>
-          </a>
-        ) : (
-          <span class="hidden flex-1 sm:block" />
-        )}
-      </nav>
-    )}
-  </article>
+    </aside>
+  </div>
 </OfficialLayout>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const list = document.querySelector("[data-toc-list]") as HTMLElement | null;
+    const box = list?.closest(".article-toc") as HTMLElement | null;
+    const prose = document.querySelector(
+      "article.article-prose .prose",
+    ) as HTMLElement | null;
+    if (!list || !box || !prose) return;
+
+    const headings = Array.from(prose.querySelectorAll<HTMLElement>("h2, h3, h4"));
+    if (headings.length === 0) return; // 无小节时保持为空（短小篇目）
+
+    const sortItems: { el: HTMLElement; a: HTMLAnchorElement }[] = [];
+    headings.forEach((el, i) => {
+      const a = document.createElement("a");
+      const raw = el.textContent || "";
+      const short = raw.replace(/[#*`]/g, "").trim();
+      a.textContent = short.length > 60 ? short.slice(0, 60) + "…" : short;
+      a.href = `#toc-${i}`;
+      a.className = "toc-link block truncate rounded px-2 py-1 transition-colors";
+      if (el.tagName === "H3") a.classList.add("ml-4");
+      if (el.tagName === "H4") a.classList.add("ml-8");
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const top = el.getBoundingClientRect().top + window.scrollY - 88;
+        window.scrollTo({ top, behavior: "smooth" });
+        setActive(i);
+      });
+      list.appendChild(a);
+      sortItems.push({ el, a });
+    });
+
+    const setActive = (idx: number) => {
+      sortItems.forEach(({ a }, i) =>
+        a.classList.toggle("toc-active", i === idx),
+      );
+    };
+
+    let ticking = false;
+    const pick = () => {
+      ticking = false;
+      let cur = -1;
+      const vp = 96;
+      for (let i = 0; i < sortItems.length; i++) {
+        const rect = sortItems[i].el.getBoundingClientRect();
+        const far = rect.top; // 每节首行到视口顶
+        if (far <= vp) cur = i;
+        else break;
+      }
+      if (cur === -1 && sortItems.length) cur = 0;
+      setActive(cur);
+    };
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(pick);
+      }
+    }, { passive: true });
+    pick();
+  });
+</script>
+
 <style>
-  /* 单篇 markdown 正文：prose 之上的非侵入优化 */
+  /* 单篇 markdown 正文（收窄左列内）：prose 非侵入优化 */
   article.article-prose :where(h2) {
     margin-top: 2.25rem;
   }
@@ -165,6 +238,22 @@ const nextHref = docLink(next);
   article.article-prose :where(:not(pre) > code) {
     border-radius: 0.375rem;
     padding: 0.15em 0.3em;
+    background: color-mix(in oklch, var(--primary) 10%, transparent);
+  }
+</style>
+
+<style is:global>
+  /* 右侧目录（渲染产物动态补入，需 global 命中） */
+  .article-toc .toc-link {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .article-toc .toc-link:hover {
+    background: color-mix(in oklch, var(--text-muted) 10%, transparent);
+  }
+  .article-toc .toc-link.toc-active {
+    color: var(--primary);
+    font-weight: 600;
     background: color-mix(in oklch, var(--primary) 10%, transparent);
   }
 </style>

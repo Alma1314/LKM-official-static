@@ -8,8 +8,14 @@ tags: [anniversary, community]
 lang: en
 ---
 
-Losing years of data in one incident was LiKeLi's toughest low point.
+## Turning “Reset” into a Rebuild
 
-But the rebuild moved forward step by step: backups and operations were standardized, and a new website and documentation architecture took shape.
+Last year’s data loss erased years of work in one incident. It was a real low point — but it forced an honest question nobody enjoys: if the data vanished again, how fast could we recover?
 
-A year on, the most valuable thing is not what we fixed, but that we kept believing and kept moving forward together.
+That answer is written across this year. Backups moved from “when we remember” to mostly automated and off-site; key content now also lives in a static site and a remote repository; and keeping contribution records gained a stable process. Those changes meant the later rebuild could rest on a solid base rather than start from a hole.
+
+## A Year Later
+
+More than “what we fixed,” what matters is direction: the site and docs grew back steadily, while summer and subject groups kept moving.
+
+We don’t claim the road is finished. If anything, we learned that lasting communities aren’t built on a single spark, but by folding important work into ordinary days. Thanks for walking this year with us.

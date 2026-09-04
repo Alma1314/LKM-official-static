@@ -8,8 +8,14 @@ tags: [team, event]
 lang: en
 ---
 
-As the rebuild settled, LiKeLi began to move from “chatting well online” to running organized events — the July Event Planning Office was established.
+## Why a Dedicated Team
 
-Its first task: preparing the summer calendar and turning scattered ideas into executable programs.
+Community events used to begin with a passing line in a chat, carried by enthusiasm. Enthusiasm carries people far — yet schedules, roles and retrospectives tend to scatter. The first job of our Event Planning Office is to make running events more than improvisation: who does what by when, and how to keep light notes worth revisiting.
 
-It marks the first time events were treated as real work. Communities flow by themselves; we just cleared the riverbed.
+It isn’t structure for its own sake. It’s so events that take a dozen people’s effort leave something the next run can reuse, instead of writing off those hours.
+
+## A Place to Help
+
+The office works in tracks — calendar and theme, room interaction, registration, review and copy. This summer’s planning is its first full pass, from inviting speakers to finalizing sign-up.
+
+We rarely lack ideas; we lack people who can own one small piece. If you’d volunteer for a day at an online event, or just want to pitch in your own way — say so in the community. Either is welcome.
